@@ -1,6 +1,6 @@
 # 📊 Social Media Analyzer
 
-![Social Media Analyzer Logo](SocialMediaAnalyzerWPF/assets/logo 1.png)
+![Social Media Analyzer Logo](SocialMediaAnalyzerWPF/assets/logo1.png)
 
 <p align="center">
   <img src="https://img.shields.io/badge/.NET-6.0+-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET">
