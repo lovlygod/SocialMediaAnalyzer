@@ -22,6 +22,7 @@
 - 🎨 **Modern Interface** — Ergonomic design with dark theme support
 - ⚡ **Content Search** — Fast search and analysis of user content
 - 🌐 **Multi-Platform Support** — Integration with popular social networks
+- 💻 **IP Address Detection** — "My IP" button to quickly view your current IP address
 
 ## 🛠️ Requirements
 

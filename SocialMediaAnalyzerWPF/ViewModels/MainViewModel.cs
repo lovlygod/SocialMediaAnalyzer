@@ -1,10 +1,13 @@
 using CommunityToolkit.Mvvm.ComponentModel;
+using SocialMediaAnalyzerWPF.Commands;
 using SocialMediaAnalyzerWPF.Models;
 using SocialMediaAnalyzerWPF.Services;
 using System;
 using System.Collections.ObjectModel;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Timers;
+using System.Windows;
 
 namespace SocialMediaAnalyzerWPF.ViewModels
 {
@@ -25,13 +28,38 @@ namespace SocialMediaAnalyzerWPF.ViewModels
         [ObservableProperty]
         private double _searchTime = 0.0;
 
+        [ObservableProperty]
+        private string _myIp = string.Empty;
+
         private readonly SocialMediaService _socialMediaService;
         private System.Diagnostics.Stopwatch? _stopwatch;
+        
+        public RelayCommand ShowMyIpCommand { get; }
 
         public MainViewModel()
         {
             _socialMediaService = new SocialMediaService();
+            ShowMyIpCommand = new RelayCommand(ShowMyIp);
             InitializeData();
+        }
+
+        private async void ShowMyIp(object parameter)
+        {
+            try
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    var response = await httpClient.GetStringAsync("https://api.ipify.org/");
+                    MyIp = response.Trim();
+                    
+                    // Показать сообщение пользователю
+                    MessageBox.Show($"Ваш IP-адрес: {MyIp}", "Мой IP", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при получении IP-адреса: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void InitializeData()

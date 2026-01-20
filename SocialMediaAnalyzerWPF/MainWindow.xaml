@@ -58,15 +58,26 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         
-                        <TextBox x:Name="UsernameTextBox"
-                                 Grid.Column="0"
-                                 Style="{StaticResource AnimatedTextBoxStyle}"
-                                 materialDesign:HintAssist.Hint="Введите имя пользователя для поиска..."
-                                 FontSize="16"
-                                 Margin="0,0,15,0"
-                                 Foreground="{DynamicResource MaterialDesignBody}"
-                                 Background="{DynamicResource MaterialDesignCardBackground}"
-                                 KeyDown="UsernameTextBox_KeyDown"/>
+                        <StackPanel Grid.Column="0" Orientation="Horizontal">
+                            <TextBox x:Name="UsernameTextBox"
+                                     Style="{StaticResource AnimatedTextBoxStyle}"
+                                     materialDesign:HintAssist.Hint="Введите имя пользователя для поиска..."
+                                     FontSize="16"
+                                     Margin="0,0,15,0"
+                                     Foreground="{DynamicResource MaterialDesignBody}"
+                                     Background="{DynamicResource MaterialDesignCardBackground}"
+                                     KeyDown="UsernameTextBox_KeyDown"
+                                     Width="300"/>
+                            
+                            <Button Content="Мой IP"
+                                    Style="{StaticResource RoundedButtonStyle}"
+                                    Background="{DynamicResource PrimaryHueDarkBrush}"
+                                    Foreground="White"
+                                    FontSize="14"
+                                    FontWeight="Medium"
+                                    Command="{Binding ShowMyIpCommand}"
+                                    Margin="10,0,0,0"/>
+                        </StackPanel>
                         
                         <Button x:Name="SearchButton"
                                 Grid.Column="1"
