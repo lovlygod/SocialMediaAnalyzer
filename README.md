@@ -1,4 +1,4 @@
-# <img src="SocialMediaAnalyzerWPF/assets/logo1.png" width="30" height="30" style="vertical-align:middle"> Social Media Analyzer
+# <img src="SocialMediaAnalyzerWPF/assets/logo1.png" width="36" height="36" style="vertical-align:middle"> Social Media Analyzer
 
 <p align="center">
   <img src="https://img.shields.io/badge/.NET-6.0+-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET">
