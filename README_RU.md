@@ -93,8 +93,8 @@ SocialMediaAnalyzerWPF/
 
 ## 📞 Контакты
 
-- Author: [lovly swag]
-- Telegram: [[lovly swag](https://t.me/lovlyswag)]
+- Author: lovly swag
+- Telegram: [lovly swag](https://t.me/lovlyswag)
 
 ---
 

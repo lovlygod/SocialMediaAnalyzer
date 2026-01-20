@@ -97,8 +97,8 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## 📞 Contacts
 
-- Author: [lovly swag]
-- Telegram: [[lovly swag](https://t.me/lovlyswag)]
+- Author: lovly swag
+- Telegram: [lovly swag](https://t.me/lovlyswag)
 
 ---
 
