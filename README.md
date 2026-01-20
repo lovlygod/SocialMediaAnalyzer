@@ -77,7 +77,7 @@ SocialMediaAnalyzerWPF/
 - [x] **Automatic real-time search statistics update**
 - [x] **English language support in the interface**
 - [ ] **Phone number search functionality**
-- [ ] **Light theme support**
+- [x] **Light theme support**
 - [ ] **Support for 25 platforms for search**
 - [ ] **Support for 50 platforms for search**
 

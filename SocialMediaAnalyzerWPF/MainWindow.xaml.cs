@@ -29,19 +29,19 @@ namespace SocialMediaAnalyzerWPF
             LocalizationManager.Instance.LanguageChanged += OnLanguageChanged;
         }
 
-        private void OnLanguageChanged(object sender, CultureInfo e)
+        private void OnLanguageChanged(object? sender, CultureInfo e)
         {
             UpdateProgressText();
         }
 
         private void LanguageSwitchButton_Click(object sender, RoutedEventArgs e)
         {
-            _viewModel.SwitchLanguageCommand.Execute(null);
+            _viewModel.SwitchLanguageCommand.Execute((object?)null);
         }
 
         private void ThemeSwitchButton_Click(object sender, RoutedEventArgs e)
         {
-            _viewModel.SwitchThemeCommand.Execute(null);
+            _viewModel.SwitchThemeCommand.Execute((object?)null);
         }
 
         private async void SearchButton_Click(object sender, RoutedEventArgs e)
@@ -70,7 +70,7 @@ namespace SocialMediaAnalyzerWPF
             }
             else if (e.Key == Key.F12) // Переключение языка по F12
             {
-                _viewModel.SwitchLanguageCommand.Execute(null);
+                _viewModel.SwitchLanguageCommand.Execute((object?)null);
             }
         }
 

@@ -61,7 +61,7 @@ namespace SocialMediaAnalyzerWPF.ViewModels
             LocalizationManager.Instance.LanguageChanged += OnLanguageChanged;
         }
 
-        private void OnLanguageChanged(object sender, CultureInfo e)
+        private void OnLanguageChanged(object? sender, CultureInfo e)
         {
             UpdateLanguageButtonText();
         }
@@ -77,7 +77,7 @@ namespace SocialMediaAnalyzerWPF.ViewModels
             ThemeIconKind = ThemeManager.CurrentTheme == AppTheme.Dark ? "WeatherNight" : "WeatherSunny";
         }
 
-        private void SwitchLanguage(object parameter = null)
+        private void SwitchLanguage(object? parameter = null)
         {
             var currentLang = LocalizationManager.Instance.CurrentCulture.Name;
             var newCulture = currentLang.StartsWith("ru") ?
@@ -87,13 +87,13 @@ namespace SocialMediaAnalyzerWPF.ViewModels
             LocalizationManager.Instance.SetLanguage(newCulture);
         }
 
-        private void SwitchTheme(object parameter = null)
+        private void SwitchTheme(object? parameter = null)
         {
             ThemeManager.ToggleTheme();
             UpdateThemeButtonText();
         }
 
-        private async void ShowMyIp(object parameter)
+        private async void ShowMyIp(object? parameter)
         {
             try
             {

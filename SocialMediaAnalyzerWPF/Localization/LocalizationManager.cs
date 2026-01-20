@@ -10,11 +10,11 @@ namespace SocialMediaAnalyzerWPF.Localization
     {
         public static LocalizationManager Instance { get; } = new LocalizationManager();
 
-        public event EventHandler<CultureInfo> LanguageChanged;
+        public event EventHandler<CultureInfo>? LanguageChanged;
 
         public CultureInfo CurrentCulture { get; private set; }
 
-        private ResourceDictionary localizedResources;
+        private ResourceDictionary? localizedResources;
 
         private LocalizationManager()
         {
@@ -70,7 +70,7 @@ namespace SocialMediaAnalyzerWPF.Localization
         {
             if (localizedResources?.Contains(key) == true)
             {
-                return localizedResources[key].ToString();
+                return localizedResources[key]?.ToString() ?? key;
             }
             return key;
         }
