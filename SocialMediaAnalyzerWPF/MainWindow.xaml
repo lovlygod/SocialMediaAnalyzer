@@ -251,43 +251,69 @@
         <Border Grid.Row="2"
                 Background="{DynamicResource MaterialDesignToolBarBackground}"
                 Padding="20,10">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                <TextBlock Text="{DynamicResource AppVersion}"
-                           FontSize="12"
-                           VerticalAlignment="Center"
-                           Foreground="{DynamicResource MaterialDesignBodyLight}"/>
-                <TextBlock Text="{DynamicResource AppAuthor}"
-                           FontSize="12"
-                           VerticalAlignment="Center"
-                           Foreground="{DynamicResource MaterialDesignBodyLight}"/>
-                <TextBlock x:Name="GitHubLink"
-                           Text="GitHub"
-                           FontSize="12"
-                           VerticalAlignment="Center"
-                           Foreground="{DynamicResource SecondaryAccentBrush}"
-                           Cursor="Hand"
-                           MouseDown="GitHubLink_MouseDown">
-                    <TextBlock.Style>
-                        <Style TargetType="TextBlock">
-                            <Setter Property="TextDecorations" Value="None"/>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="TextDecorations" Value="Underline"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBlock.Style>
-                </TextBlock>
-                <Button x:Name="LanguageSwitchButton"
-                        Content="{Binding LanguageButtonText}"
-                        Style="{StaticResource RoundedButtonStyle}"
-                        Background="{DynamicResource PrimaryHueDarkBrush}"
-                        Foreground="White"
-                        FontSize="12"
-                        FontWeight="Medium"
-                        Margin="10,0,0,0"
-                        Click="LanguageSwitchButton_Click"/>
-            </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                    <TextBlock Text="{DynamicResource AppVersion}"
+                               FontSize="12"
+                               VerticalAlignment="Center"
+                               Foreground="{DynamicResource MaterialDesignBodyLight}"/>
+                    <TextBlock Text="{DynamicResource AppAuthor}"
+                               FontSize="12"
+                               VerticalAlignment="Center"
+                               Foreground="{DynamicResource MaterialDesignBodyLight}"/>
+                    <TextBlock x:Name="GitHubLink"
+                               Text="GitHub"
+                               FontSize="12"
+                               VerticalAlignment="Center"
+                               Foreground="{DynamicResource SecondaryAccentBrush}"
+                               Cursor="Hand"
+                               MouseDown="GitHubLink_MouseDown">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="TextDecorations" Value="None"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="TextDecorations" Value="Underline"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </StackPanel>
+                
+                <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="LanguageSwitchButton"
+                            Content="{Binding LanguageButtonText}"
+                            Style="{StaticResource RoundedButtonStyle}"
+                            Background="{DynamicResource PrimaryHueDarkBrush}"
+                            Foreground="White"
+                            FontSize="12"
+                            FontWeight="Medium"
+                            Margin="0,0,10,0"
+                            Click="LanguageSwitchButton_Click"/>
+                    <Button x:Name="ThemeSwitchButton"
+                            Style="{StaticResource RoundedButtonStyle}"
+                            Background="{DynamicResource PrimaryHueDarkBrush}"
+                            Foreground="White"
+                            FontSize="12"
+                            FontWeight="Medium"
+                            Margin="0,0,0,0"
+                            Click="ThemeSwitchButton_Click">
+                        <Button.Content>
+                            <materialDesign:PackIcon x:Name="ThemeIcon"
+                                                     Kind="{Binding ThemeIconKind}"
+                                                     Width="16"
+                                                     Height="16"/>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+            </Grid>
         </Border>
     </Grid>
 </Window>

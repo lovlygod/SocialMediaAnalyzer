@@ -18,7 +18,6 @@ namespace SocialMediaAnalyzerWPF.Localization
 
         private LocalizationManager()
         {
-            // Определяем язык системы
             var systemLanguage = CultureInfo.InstalledUICulture.TwoLetterISOLanguageName;
             
             if (systemLanguage == "ru")
@@ -27,7 +26,6 @@ namespace SocialMediaAnalyzerWPF.Localization
             }
             else
             {
-                // По умолчанию используем английский для всех остальных языков
                 CurrentCulture = new CultureInfo("en-US");
             }
             
@@ -43,13 +41,11 @@ namespace SocialMediaAnalyzerWPF.Localization
 
         private void LoadLocalizedResources()
         {
-            // Удаляем старые ресурсы, если они есть
             if (localizedResources != null)
             {
                 Application.Current.Resources.MergedDictionaries.Remove(localizedResources);
             }
 
-            // Формируем путь к файлу ресурсов
             var resourceFileName = $"/Localization/Strings.{CurrentCulture.Name}.xaml";
             
             try
@@ -60,7 +56,6 @@ namespace SocialMediaAnalyzerWPF.Localization
             }
             catch (Exception)
             {
-                // Если не удается загрузить конкретную локализацию, используем английский по умолчанию
                 if (CurrentCulture.Name != "en-US")
                 {
                     var fallbackUri = new Uri("/Localization/Strings.en-US.xaml", UriKind.Relative);
@@ -77,7 +72,7 @@ namespace SocialMediaAnalyzerWPF.Localization
             {
                 return localizedResources[key].ToString();
             }
-            return key; // Возвращаем ключ, если строка не найдена
+            return key;
         }
     }
 }

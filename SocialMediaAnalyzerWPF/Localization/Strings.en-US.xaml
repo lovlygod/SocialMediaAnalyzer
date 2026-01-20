@@ -20,7 +20,7 @@
     <sys:String x:Key="TimeText">Time</sys:String>
     <sys:String x:Key="SearchCompleted">Search completed</sys:String>
     <sys:String x:Key="SearchInProgress">Searching...</sys:String>
-    <sys:String x:Key="AppVersion">Social Media Analyzer v1.0 | </sys:String>
+    <sys:String x:Key="AppVersion">Social Media Analyzer v1.4.0 | </sys:String>
     <sys:String x:Key="AppAuthor">Author: lovly swag | </sys:String>
     
     <!-- Error and info messages -->

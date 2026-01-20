@@ -37,23 +37,27 @@ namespace SocialMediaAnalyzerWPF.ViewModels
         [ObservableProperty]
         private string _languageButtonText = "EN";
 
+        [ObservableProperty]
+        private string _themeIconKind = "Brightness3";
+
         private readonly SocialMediaService _socialMediaService;
         private System.Diagnostics.Stopwatch? _stopwatch;
         
         public RelayCommand ShowMyIpCommand { get; }
         public RelayCommand SwitchLanguageCommand { get; }
+        public RelayCommand SwitchThemeCommand { get; }
 
         public MainViewModel()
         {
             _socialMediaService = new SocialMediaService();
             ShowMyIpCommand = new RelayCommand(ShowMyIp);
             SwitchLanguageCommand = new RelayCommand(SwitchLanguage);
+            SwitchThemeCommand = new RelayCommand(SwitchTheme);
             InitializeData();
             
-            // Установка начального текста кнопки в зависимости от текущего языка
             UpdateLanguageButtonText();
+            UpdateThemeButtonText();
             
-            // Подписка на событие изменения языка
             LocalizationManager.Instance.LanguageChanged += OnLanguageChanged;
         }
 
@@ -68,14 +72,25 @@ namespace SocialMediaAnalyzerWPF.ViewModels
             LanguageButtonText = currentLang.StartsWith("ru") ? "EN" : "RU";
         }
 
+        private void UpdateThemeButtonText()
+        {
+            ThemeIconKind = ThemeManager.CurrentTheme == AppTheme.Dark ? "WeatherNight" : "WeatherSunny";
+        }
+
         private void SwitchLanguage(object parameter = null)
         {
             var currentLang = LocalizationManager.Instance.CurrentCulture.Name;
-            var newCulture = currentLang.StartsWith("ru") ? 
-                new CultureInfo("en-US") : 
+            var newCulture = currentLang.StartsWith("ru") ?
+                new CultureInfo("en-US") :
                 new CultureInfo("ru-RU");
                 
             LocalizationManager.Instance.SetLanguage(newCulture);
+        }
+
+        private void SwitchTheme(object parameter = null)
+        {
+            ThemeManager.ToggleTheme();
+            UpdateThemeButtonText();
         }
 
         private async void ShowMyIp(object parameter)

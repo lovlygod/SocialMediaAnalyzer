@@ -26,19 +26,22 @@ namespace SocialMediaAnalyzerWPF
             _viewModel = new MainViewModel();
             DataContext = _viewModel;
             
-            // Подписываемся на событие изменения языка
             LocalizationManager.Instance.LanguageChanged += OnLanguageChanged;
         }
 
         private void OnLanguageChanged(object sender, CultureInfo e)
         {
-            // Обновляем текст прогресса при смене языка
             UpdateProgressText();
         }
 
         private void LanguageSwitchButton_Click(object sender, RoutedEventArgs e)
         {
             _viewModel.SwitchLanguageCommand.Execute(null);
+        }
+
+        private void ThemeSwitchButton_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.SwitchThemeCommand.Execute(null);
         }
 
         private async void SearchButton_Click(object sender, RoutedEventArgs e)

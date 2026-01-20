@@ -1,5 +1,6 @@
 using System.Windows;
 using SocialMediaAnalyzerWPF.Localization;
+using SocialMediaAnalyzerWPF.Services;
 
 namespace SocialMediaAnalyzerWPF
 {
@@ -12,7 +13,8 @@ namespace SocialMediaAnalyzerWPF
         {
             base.OnStartup(e);
             
-            // Инициализация локализации
+            ThemeManager.SetTheme(AppTheme.Dark);
+            
             LocalizationManager.Instance.SetLanguage(LocalizationManager.Instance.CurrentCulture);
         }
     }
