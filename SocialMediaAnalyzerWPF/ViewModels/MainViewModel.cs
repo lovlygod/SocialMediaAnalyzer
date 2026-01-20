@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace SocialMediaAnalyzerWPF.ViewModels
 {
@@ -52,7 +53,6 @@ namespace SocialMediaAnalyzerWPF.ViewModels
                     var response = await httpClient.GetStringAsync("https://api.ipify.org/");
                     MyIp = response.Trim();
                     
-                    // Показать сообщение пользователю
                     MessageBox.Show($"Ваш IP-адрес: {MyIp}", "Мой IP", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
@@ -91,23 +91,29 @@ namespace SocialMediaAnalyzerWPF.ViewModels
             {
                 if (!string.IsNullOrEmpty(username))
                 {
-                    var results = await _socialMediaService.SearchProfileAsync(username);
+                    TotalPlatformsCount = _socialMediaService.GetPlatformCount();
+                    OnPropertyChanged(nameof(TotalPlatformsCount));
                     
-                    foreach (var result in results)
+                    await _socialMediaService.SearchProfileAsync(username, (result) =>
                     {
-                        SearchResults.Add(result);
-                        
-                        if (result.IsFound)
+                        Application.Current.Dispatcher.Invoke(() =>
                         {
-                            FoundProfilesCount++;
-                        }
-                        else
-                        {
-                            NotFoundProfilesCount++;
-                        }
-                    }
-                    
-                    TotalPlatformsCount = results.Count;
+                            SearchResults.Add(result);
+                            
+                            if (result.IsFound)
+                            {
+                                FoundProfilesCount++;
+                            }
+                            else
+                            {
+                                NotFoundProfilesCount++;
+                            }
+                            
+                            OnPropertyChanged(nameof(SearchResults));
+                            OnPropertyChanged(nameof(FoundProfilesCount));
+                            OnPropertyChanged(nameof(NotFoundProfilesCount));
+                        });
+                    });
                 }
             }
             finally
@@ -116,10 +122,6 @@ namespace SocialMediaAnalyzerWPF.ViewModels
                 _stopwatch.Stop();
                 SearchTime = _stopwatch.Elapsed.TotalSeconds;
                 
-                OnPropertyChanged(nameof(SearchResults));
-                OnPropertyChanged(nameof(TotalPlatformsCount));
-                OnPropertyChanged(nameof(FoundProfilesCount));
-                OnPropertyChanged(nameof(NotFoundProfilesCount));
                 OnPropertyChanged(nameof(SearchTime));
             }
         }

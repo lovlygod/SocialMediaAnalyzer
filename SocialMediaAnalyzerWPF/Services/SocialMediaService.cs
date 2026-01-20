@@ -36,6 +36,36 @@ namespace SocialMediaAnalyzerWPF.Services
             };
         }
 
+        public int GetPlatformCount()
+        {
+            return _platformUrls.Count;
+        }
+
+        public async Task SearchProfileAsync(string? username, Action<SearchResult> onResultReceived)
+        {
+            if (string.IsNullOrEmpty(username))
+            {
+                return;
+            }
+
+            var tasks = new List<Task>();
+
+            foreach (var platform in _platformUrls)
+            {
+                var task = Task.Run(async () =>
+                {
+                    var profileUrl = string.Format(platform.Value, username);
+                    var result = await CheckProfileExistsAsync(platform.Key, username, profileUrl);
+                    onResultReceived(result);
+                });
+                tasks.Add(task);
+
+                await Task.Delay(100);
+            }
+
+            await Task.WhenAll(tasks);
+        }
+
         public async Task<List<SearchResult>> SearchProfileAsync(string? username)
         {
             var results = new List<SearchResult>();
