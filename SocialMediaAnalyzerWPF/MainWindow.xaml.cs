@@ -8,6 +8,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 using SocialMediaAnalyzerWPF.ViewModels;
+using SocialMediaAnalyzerWPF.Localization;
+using System.Globalization;
 
 namespace SocialMediaAnalyzerWPF
 {
@@ -23,6 +25,20 @@ namespace SocialMediaAnalyzerWPF
             InitializeComponent();
             _viewModel = new MainViewModel();
             DataContext = _viewModel;
+            
+            // Подписываемся на событие изменения языка
+            LocalizationManager.Instance.LanguageChanged += OnLanguageChanged;
+        }
+
+        private void OnLanguageChanged(object sender, CultureInfo e)
+        {
+            // Обновляем текст прогресса при смене языка
+            UpdateProgressText();
+        }
+
+        private void LanguageSwitchButton_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.SwitchLanguageCommand.Execute(null);
         }
 
         private async void SearchButton_Click(object sender, RoutedEventArgs e)
@@ -30,8 +46,9 @@ namespace SocialMediaAnalyzerWPF
             var username = UsernameTextBox.Text?.Trim();
             if (string.IsNullOrEmpty(username))
             {
-                MessageBox.Show("Пожалуйста, введите имя пользователя для поиска.",
-                    "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                var message = LocalizationManager.Instance.GetLocalizedString("EmptyUsernameError");
+                var title = LocalizationManager.Instance.GetLocalizedString("ErrorMessageTitle");
+                MessageBox.Show(message, title, MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -48,12 +65,16 @@ namespace SocialMediaAnalyzerWPF
                     await PerformSearchAsync(username);
                 }
             }
+            else if (e.Key == Key.F12) // Переключение языка по F12
+            {
+                _viewModel.SwitchLanguageCommand.Execute(null);
+            }
         }
 
         private async Task PerformSearchAsync(string? username)
         {
             SearchProgressBar.Visibility = Visibility.Visible;
-            ProgressTextBlock.Text = "Поиск...";
+            ProgressTextBlock.Text = LocalizationManager.Instance.GetLocalizedString("SearchInProgress");
             ProgressTextBlock.Visibility = Visibility.Visible;
             SearchButton.IsEnabled = false;
 
@@ -66,11 +87,15 @@ namespace SocialMediaAnalyzerWPF
             }
             finally
             {
-                SearchProgressBar.Visibility = Visibility.Collapsed;
-                ProgressTextBlock.Text = $"Поиск завершен за {_viewModel.SearchTime:F2} секунд";
-                
+                UpdateProgressText();
                 SearchButton.IsEnabled = true;
             }
+        }
+
+        private void UpdateProgressText()
+        {
+            var template = LocalizationManager.Instance.GetLocalizedString("SearchCompletedIn");
+            ProgressTextBlock.Text = string.Format(template, _viewModel.SearchTime);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -108,8 +133,9 @@ namespace SocialMediaAnalyzerWPF
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Не удалось открыть ссылку: {ex.Message}",
-                    "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                var message = LocalizationManager.Instance.GetLocalizedString("LinkOpenError");
+                var title = LocalizationManager.Instance.GetLocalizedString("ErrorMessageTitle");
+                MessageBox.Show(string.Format(message, ex.Message), title, MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

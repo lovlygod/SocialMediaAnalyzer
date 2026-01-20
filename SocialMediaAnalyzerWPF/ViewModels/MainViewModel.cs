@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
 using System.Windows.Threading;
+using SocialMediaAnalyzerWPF.Localization;
+using System.Globalization;
 
 namespace SocialMediaAnalyzerWPF.ViewModels
 {
@@ -32,16 +34,48 @@ namespace SocialMediaAnalyzerWPF.ViewModels
         [ObservableProperty]
         private string _myIp = string.Empty;
 
+        [ObservableProperty]
+        private string _languageButtonText = "EN";
+
         private readonly SocialMediaService _socialMediaService;
         private System.Diagnostics.Stopwatch? _stopwatch;
         
         public RelayCommand ShowMyIpCommand { get; }
+        public RelayCommand SwitchLanguageCommand { get; }
 
         public MainViewModel()
         {
             _socialMediaService = new SocialMediaService();
             ShowMyIpCommand = new RelayCommand(ShowMyIp);
+            SwitchLanguageCommand = new RelayCommand(SwitchLanguage);
             InitializeData();
+            
+            // Установка начального текста кнопки в зависимости от текущего языка
+            UpdateLanguageButtonText();
+            
+            // Подписка на событие изменения языка
+            LocalizationManager.Instance.LanguageChanged += OnLanguageChanged;
+        }
+
+        private void OnLanguageChanged(object sender, CultureInfo e)
+        {
+            UpdateLanguageButtonText();
+        }
+
+        private void UpdateLanguageButtonText()
+        {
+            var currentLang = LocalizationManager.Instance.CurrentCulture.Name;
+            LanguageButtonText = currentLang.StartsWith("ru") ? "EN" : "RU";
+        }
+
+        private void SwitchLanguage(object parameter = null)
+        {
+            var currentLang = LocalizationManager.Instance.CurrentCulture.Name;
+            var newCulture = currentLang.StartsWith("ru") ? 
+                new CultureInfo("en-US") : 
+                new CultureInfo("ru-RU");
+                
+            LocalizationManager.Instance.SetLanguage(newCulture);
         }
 
         private async void ShowMyIp(object parameter)
@@ -53,12 +87,16 @@ namespace SocialMediaAnalyzerWPF.ViewModels
                     var response = await httpClient.GetStringAsync("https://api.ipify.org/");
                     MyIp = response.Trim();
                     
-                    MessageBox.Show($"Ваш IP-адрес: {MyIp}", "Мой IP", MessageBoxButton.OK, MessageBoxImage.Information);
+                    var message = LocalizationManager.Instance.GetLocalizedString("MyIPMessage");
+                    var title = LocalizationManager.Instance.GetLocalizedString("InfoMessageTitle");
+                    MessageBox.Show(string.Format(message, MyIp), title, MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка при получении IP-адреса: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                var message = LocalizationManager.Instance.GetLocalizedString("IPRetrievalError");
+                var title = LocalizationManager.Instance.GetLocalizedString("ErrorMessageTitle");
+                MessageBox.Show(string.Format(message, ex.Message), title, MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

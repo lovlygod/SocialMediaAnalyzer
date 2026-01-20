@@ -10,6 +10,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/MaterialDesignColor.Grey.xaml" />
                 <ResourceDictionary Source="Resources/DarkTheme.xaml" />
                 <ResourceDictionary Source="Resources/Animations.xaml" />
+                <ResourceDictionary Source="/Localization/Strings.en-US.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

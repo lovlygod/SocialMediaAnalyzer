@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Social Media Analyzer"
+        Title="{DynamicResource WindowTitle}"
         Icon="assets/logo.png"
         Height="700"
         Width="1000"
@@ -37,7 +37,7 @@
                        Height="30"
                        VerticalAlignment="Center"
                        RenderOptions.BitmapScalingMode="HighQuality"/>
-                <TextBlock Text="Social Media Analyzer"
+                <TextBlock Text="{DynamicResource AppName}"
                            FontSize="24"
                            FontWeight="Bold"
                            Foreground="White"
@@ -61,7 +61,7 @@
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
                             <TextBox x:Name="UsernameTextBox"
                                      Style="{StaticResource AnimatedTextBoxStyle}"
-                                     materialDesign:HintAssist.Hint="Введите имя пользователя для поиска..."
+                                     materialDesign:HintAssist.Hint="{DynamicResource EnterUsernamePlaceholder}"
                                      FontSize="16"
                                      Margin="0,0,15,0"
                                      Foreground="{DynamicResource MaterialDesignBody}"
@@ -69,7 +69,7 @@
                                      KeyDown="UsernameTextBox_KeyDown"
                                      Width="300"/>
                             
-                            <Button Content="Мой IP"
+                            <Button Content="{DynamicResource MyIPButton}"
                                     Style="{StaticResource RoundedButtonStyle}"
                                     Background="{DynamicResource PrimaryHueDarkBrush}"
                                     Foreground="White"
@@ -81,7 +81,7 @@
                         
                         <Button x:Name="SearchButton"
                                 Grid.Column="1"
-                                Content="Поиск"
+                                Content="{DynamicResource SearchButton}"
                                 Style="{StaticResource RoundedButtonStyle}"
                                 Background="{DynamicResource SecondaryAccentBrush}"
                                 Foreground="White"
@@ -92,7 +92,7 @@
                 </materialDesign:Card>
 
                 <materialDesign:Card Style="{StaticResource RoundedCardStyle}">
-                    <Expander Header="Результаты поиска"
+                    <Expander Header="{DynamicResource SearchResultsHeader}"
                               Margin="5"
                               Style="{StaticResource DarkExpanderStyle}">
                         <ScrollViewer MaxHeight="300">
@@ -107,7 +107,7 @@
                                       Style="{StaticResource DarkListViewStyle}">
                                 <ListView.View>
                                     <GridView>
-                                        <GridViewColumn Header="Социальная сеть" Width="150">
+                                        <GridViewColumn Header="{DynamicResource SocialNetworkColumn}" Width="150">
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock Text="{Binding Platform}"
@@ -116,7 +116,7 @@
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
-                                        <GridViewColumn Header="Имя пользователя" Width="150">
+                                        <GridViewColumn Header="{DynamicResource UsernameColumn}" Width="150">
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock Text="{Binding Username}"
@@ -125,7 +125,7 @@
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
-                                        <GridViewColumn Header="URL профиля" Width="300">
+                                        <GridViewColumn Header="{DynamicResource ProfileUrlColumn}" Width="300">
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock Text="{Binding ProfileUrl}"
@@ -134,7 +134,7 @@
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
-                                        <GridViewColumn Header="Статус" Width="100">
+                                        <GridViewColumn Header="{DynamicResource StatusColumn}" Width="100">
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock Text="{Binding Status}"
@@ -160,7 +160,7 @@
                 </materialDesign:Card>
 
                 <materialDesign:Card Style="{StaticResource RoundedCardStyle}">
-                    <Expander Header="Статистика поиска"
+                    <Expander Header="{DynamicResource SearchStatisticsHeader}"
                               Margin="5"
                               Style="{StaticResource DarkExpanderStyle}">
                         <Grid Margin="10">
@@ -177,7 +177,7 @@
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            Foreground="{DynamicResource SecondaryAccentBrush}"/>
-                                <TextBlock Text="Платформ"
+                                <TextBlock Text="{DynamicResource PlatformsText}"
                                            FontSize="12"
                                            HorizontalAlignment="Center"
                                            Foreground="{DynamicResource MaterialDesignBodyLight}"/>
@@ -189,7 +189,7 @@
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            Foreground="{DynamicResource SecondaryAccentBrush}"/>
-                                <TextBlock Text="Найдено"
+                                <TextBlock Text="{DynamicResource FoundText}"
                                            FontSize="12"
                                            HorizontalAlignment="Center"
                                            Foreground="{DynamicResource MaterialDesignBodyLight}"/>
@@ -201,19 +201,19 @@
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            Foreground="{DynamicResource SecondaryAccentBrush}"/>
-                                <TextBlock Text="Не найдено"
+                                <TextBlock Text="{DynamicResource NotFoundText}"
                                            FontSize="12"
                                            HorizontalAlignment="Center"
                                            Foreground="{DynamicResource MaterialDesignBodyLight}"/>
                             </StackPanel>
                             
                             <StackPanel Grid.Column="3" Margin="5" Tag="stat4">
-                                <TextBlock Text="{Binding SearchTime, StringFormat='{}{0:F2}с'}"
+                                <TextBlock Text="{Binding SearchTime, StringFormat='{}{0:F2}s'}"
                                            FontSize="24"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            Foreground="{DynamicResource SecondaryAccentBrush}"/>
-                                <TextBlock Text="Время"
+                                <TextBlock Text="{DynamicResource TimeText}"
                                            FontSize="12"
                                            HorizontalAlignment="Center"
                                            Foreground="{DynamicResource MaterialDesignBodyLight}"/>
@@ -239,7 +239,7 @@
                         
                         <TextBlock x:Name="ProgressTextBlock"
                                    Grid.Column="1"
-                                   Text="Поиск завершен"
+                                   Text="{DynamicResource SearchCompleted}"
                                    VerticalAlignment="Center"
                                    Foreground="{DynamicResource MaterialDesignBody}"/>
                     </Grid>
@@ -252,11 +252,11 @@
                 Background="{DynamicResource MaterialDesignToolBarBackground}"
                 Padding="20,10">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                <TextBlock Text="Social Media Analyzer v1.0 | "
+                <TextBlock Text="{DynamicResource AppVersion}"
                            FontSize="12"
                            VerticalAlignment="Center"
                            Foreground="{DynamicResource MaterialDesignBodyLight}"/>
-                <TextBlock Text="Author: lovly swag | "
+                <TextBlock Text="{DynamicResource AppAuthor}"
                            FontSize="12"
                            VerticalAlignment="Center"
                            Foreground="{DynamicResource MaterialDesignBodyLight}"/>
@@ -278,6 +278,15 @@
                         </Style>
                     </TextBlock.Style>
                 </TextBlock>
+                <Button x:Name="LanguageSwitchButton"
+                        Content="{Binding LanguageButtonText}"
+                        Style="{StaticResource RoundedButtonStyle}"
+                        Background="{DynamicResource PrimaryHueDarkBrush}"
+                        Foreground="White"
+                        FontSize="12"
+                        FontWeight="Medium"
+                        Margin="10,0,0,0"
+                        Click="LanguageSwitchButton_Click"/>
             </StackPanel>
         </Border>
     </Grid>

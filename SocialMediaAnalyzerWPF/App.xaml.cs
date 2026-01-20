@@ -1,4 +1,5 @@
 using System.Windows;
+using SocialMediaAnalyzerWPF.Localization;
 
 namespace SocialMediaAnalyzerWPF
 {
@@ -10,6 +11,9 @@ namespace SocialMediaAnalyzerWPF
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+            
+            // Инициализация локализации
+            LocalizationManager.Instance.SetLanguage(LocalizationManager.Instance.CurrentCulture);
         }
     }
 }

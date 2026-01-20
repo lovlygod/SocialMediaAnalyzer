@@ -75,7 +75,7 @@ SocialMediaAnalyzerWPF/
 ## 📋 Development Features
 
 - [x] **Automatic real-time search statistics update**
-- [ ] **English language support in the interface**
+- [x] **English language support in the interface**
 - [ ] **Phone number search functionality**
 - [ ] **Light theme support**
 - [ ] **Support for 25 platforms for search**
