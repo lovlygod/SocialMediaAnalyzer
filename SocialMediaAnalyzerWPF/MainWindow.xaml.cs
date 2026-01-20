@@ -77,6 +77,7 @@ namespace SocialMediaAnalyzerWPF
         private async Task PerformSearchAsync(string? username)
         {
             SearchProgressBar.Visibility = Visibility.Visible;
+            SearchProgressBar.IsIndeterminate = true;
             ProgressTextBlock.Text = LocalizationManager.Instance.GetLocalizedString("SearchInProgress");
             ProgressTextBlock.Visibility = Visibility.Visible;
             SearchButton.IsEnabled = false;
@@ -90,6 +91,8 @@ namespace SocialMediaAnalyzerWPF
             }
             finally
             {
+                SearchProgressBar.IsIndeterminate = false;
+                SearchProgressBar.Visibility = Visibility.Collapsed;
                 UpdateProgressText();
                 SearchButton.IsEnabled = true;
             }

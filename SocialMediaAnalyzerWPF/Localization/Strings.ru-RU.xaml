@@ -20,7 +20,7 @@
     <sys:String x:Key="TimeText">Время</sys:String>
     <sys:String x:Key="SearchCompleted">Поиск завершен</sys:String>
     <sys:String x:Key="SearchInProgress">Поиск...</sys:String>
-    <sys:String x:Key="AppVersion">Анализатор социальных сетей v1.4.1 | </sys:String>
+    <sys:String x:Key="AppVersion">Анализатор социальных сетей v1.4.2 | </sys:String>
     <sys:String x:Key="AppAuthor">Автор: lovly swag | </sys:String>
     
     <!-- Error and info messages -->
