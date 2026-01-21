@@ -20,7 +20,7 @@
     <sys:String x:Key="TimeText">Time</sys:String>
     <sys:String x:Key="SearchCompleted">Search completed</sys:String>
     <sys:String x:Key="SearchInProgress">Searching...</sys:String>
-    <sys:String x:Key="AppVersion">Social Media Analyzer v1.5.0 | </sys:String>
+    <sys:String x:Key="AppVersion">Social Media Analyzer v1.5.1 | </sys:String>
     <sys:String x:Key="AppAuthor">Author: lovly swag | </sys:String>
     
     <!-- Error and info messages -->
@@ -33,5 +33,10 @@
     <!-- Additional UI strings -->
     <sys:String x:Key="SearchCompletedIn">Search completed in {0:F2} seconds</sys:String>
     <sys:String x:Key="MyIPMessage">Your IP address: {0}</sys:String>
+    <sys:String x:Key="StatusFound">Found</sys:String>
+    <sys:String x:Key="StatusNotFound">Not Found</sys:String>
+    <sys:String x:Key="StatusTimeoutError">Error: Timeout expired</sys:String>
+    <sys:String x:Key="StatusHttpError">HTTP Error: {0}</sys:String>
+    <sys:String x:Key="StatusGeneralError">Error: {0}</sys:String>
     
 </ResourceDictionary>

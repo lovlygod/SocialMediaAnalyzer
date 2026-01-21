@@ -142,7 +142,9 @@ namespace SocialMediaAnalyzerWPF.Services
                         Platform = platform,
                         Username = username,
                         ProfileUrl = response.IsSuccessStatusCode ? profileUrl : "",
-                        Status = response.IsSuccessStatusCode ? "Найден" : "Не найден",
+                        Status = response.IsSuccessStatusCode ?
+                            Localization.LocalizationManager.Instance.GetLocalizedString("StatusFound") :
+                            Localization.LocalizationManager.Instance.GetLocalizedString("StatusNotFound"),
                         IsFound = response.IsSuccessStatusCode
                     };
                 }
@@ -154,7 +156,7 @@ namespace SocialMediaAnalyzerWPF.Services
                     Platform = platform,
                     Username = username,
                     ProfileUrl = "",
-                    Status = "Ошибка: Время ожидания истекло",
+                    Status = Localization.LocalizationManager.Instance.GetLocalizedString("StatusTimeoutError"),
                     IsFound = false
                 };
             }
@@ -165,7 +167,7 @@ namespace SocialMediaAnalyzerWPF.Services
                     Platform = platform,
                     Username = username,
                     ProfileUrl = "",
-                    Status = $"Ошибка HTTP: {httpEx.Message}",
+                    Status = string.Format(Localization.LocalizationManager.Instance.GetLocalizedString("StatusHttpError"), httpEx.Message),
                     IsFound = false
                 };
             }
@@ -176,7 +178,7 @@ namespace SocialMediaAnalyzerWPF.Services
                     Platform = platform,
                     Username = username,
                     ProfileUrl = "",
-                    Status = $"Ошибка: {ex.Message}",
+                    Status = string.Format(Localization.LocalizationManager.Instance.GetLocalizedString("StatusGeneralError"), ex.Message),
                     IsFound = false
                 };
             }

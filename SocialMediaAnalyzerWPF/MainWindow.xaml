@@ -95,16 +95,17 @@
                     <Expander Header="{DynamicResource SearchResultsHeader}"
                               Margin="5"
                               Style="{StaticResource DarkExpanderStyle}">
-                        <ScrollViewer MaxHeight="300">
-                            <ListView x:Name="ResultsListView"
-                                      ItemsSource="{Binding SearchResults}"
-                                      Margin="10"
-                                      Background="{DynamicResource MaterialDesignCardBackground}"
-                                      Foreground="{DynamicResource MaterialDesignBody}"
-                                      BorderBrush="{DynamicResource MaterialDesignDivider}"
-                                      ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                                      Loaded="ListView_Loaded"
-                                      Style="{StaticResource DarkListViewStyle}">
+                        <ListView x:Name="ResultsListView"
+                                  ItemsSource="{Binding SearchResults}"
+                                  Margin="10"
+                                  MaxHeight="300"
+                                  Background="{DynamicResource MaterialDesignCardBackground}"
+                                  Foreground="{DynamicResource MaterialDesignBody}"
+                                  BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                  Loaded="ListView_Loaded"
+                                  Style="{StaticResource DarkListViewStyle}">
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn Header="{DynamicResource SocialNetworkColumn}" Width="150">
@@ -155,8 +156,7 @@
                                     </Style>
                                 </ListView.ItemContainerStyle>
                             </ListView>
-                        </ScrollViewer>
-                    </Expander>
+                        </Expander>
                 </materialDesign:Card>
 
                 <materialDesign:Card Style="{StaticResource RoundedCardStyle}">

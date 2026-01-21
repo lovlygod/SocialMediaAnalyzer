@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Animation;
 using SocialMediaAnalyzerWPF.ViewModels;
 using SocialMediaAnalyzerWPF.Localization;
@@ -125,6 +126,27 @@ namespace SocialMediaAnalyzerWPF
             var animation = new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.5));
             animation.BeginTime = TimeSpan.FromMilliseconds(500);
             (sender as ListView)?.BeginAnimation(OpacityProperty, animation);
+        }
+
+
+        private ScrollViewer? GetScrollViewer(DependencyObject? element)
+        {
+            if (element == null) return null;
+
+            if (element is ScrollViewer scrollViewer)
+            {
+                return scrollViewer;
+            }
+
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(element); i++)
+            {
+                var child = VisualTreeHelper.GetChild(element, i);
+                var result = GetScrollViewer(child);
+                if (result != null)
+                    return result;
+            }
+
+            return null;
         }
 
         private void GitHubLink_MouseDown(object sender, MouseButtonEventArgs e)
