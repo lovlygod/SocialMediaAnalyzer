@@ -1,0 +1,16 @@
+*.user
+*.userosscache
+*.suo
+*.userprefs
+
+bin/
+obj/
+out/
+
+*.log
+.vs/
+.vscode/
+
+appsettings*.json
+
+todo_list.md

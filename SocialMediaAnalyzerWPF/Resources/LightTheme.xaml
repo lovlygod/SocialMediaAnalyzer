@@ -1,0 +1,45 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="MaterialDesignPaper" Color="#FAFAFA" />
+    <SolidColorBrush x:Key="MaterialDesignCardBackground" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="MaterialDesignToolBarBackground" Color="#F5F5F5" />
+    <SolidColorBrush x:Key="MaterialDesignCanvas" Color="#FAFAFA" />
+    
+    <SolidColorBrush x:Key="MaterialDesignBody" Color="#212121" />
+    <SolidColorBrush x:Key="MaterialDesignBodyLight" Color="#757575" />
+    <SolidColorBrush x:Key="MaterialDesignBodyDark" Color="#212121" />
+    <SolidColorBrush x:Key="MaterialDesignColumnHeader" Color="#212121" />
+    
+    <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="#E1BEE7" />
+    <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#AB47BC" />
+    <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="#8E24AA" />
+    <SolidColorBrush x:Key="SecondaryAccentBrush" Color="#8E24AA" />
+    <SolidColorBrush x:Key="SecondaryAccentForegroundBrush" Color="#FFFFFF" />
+    
+    <SolidColorBrush x:Key="MaterialDesignDivider" Color="#E0E0E0" />
+    <SolidColorBrush x:Key="MaterialDesignSelection" Color="#E3F2FD" />
+    
+    <SolidColorBrush x:Key="MaterialDesignCheckBoxOff" Color="#757575" />
+    <SolidColorBrush x:Key="MaterialDesignCheckBoxDisabled" Color="#BDBDBD" />
+    <SolidColorBrush x:Key="MaterialDesignTextBoxBorder" Color="#BDBDBD" />
+    
+    <SolidColorBrush x:Key="MaterialDesignValidationError" Color="#B71C1C" />
+    <SolidColorBrush x:Key="MaterialDesignSnackbarErrorBackground" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="MaterialDesignSnackbarErrorText" Color="#B71C1C" />
+    
+    <Color x:Key="MaterialDesignFlatButtonClick">#E0E0E0</Color>
+    <Color x:Key="MaterialDesignFlatButtonRipple">#9E9E9E</Color>
+    
+    <SolidColorBrush x:Key="MaterialDesignFlatButtonBackground" Color="Transparent" />
+    <SolidColorBrush x:Key="MaterialDesignFlatButtonForeground" Color="#212121" />
+    
+    <SolidColorBrush x:Key="MaterialDesignRaisedButtonBackground" Color="#EEEEEE" />
+    <SolidColorBrush x:Key="MaterialDesignRaisedButtonForeground" Color="#212121" />
+    
+    <SolidColorBrush x:Key="MaterialDesignSwitchTrackOn" Color="#E1BEE7" />
+    <SolidColorBrush x:Key="MaterialDesignSwitchTrackOff" Color="#BDBDBD" />
+    <SolidColorBrush x:Key="MaterialDesignSwitchThumbOn" Color="#AB47BC" />
+    <SolidColorBrush x:Key="MaterialDesignSwitchThumbOff" Color="#FAFAFA" />
+
+</ResourceDictionary>

@@ -1,0 +1,62 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Main window elements -->
+    <sys:String x:Key="AppName">Анализатор социальных сетей</sys:String>
+    <sys:String x:Key="WindowTitle">Анализатор социальных сетей</sys:String>
+    <sys:String x:Key="EnterUsernamePlaceholder">Введите имя пользователя для поиска...</sys:String>
+    <sys:String x:Key="MyIPButton">Мой IP</sys:String>
+    <sys:String x:Key="SearchButton">Поиск</sys:String>
+    <sys:String x:Key="SearchResultsHeader">Результаты поиска</sys:String>
+    <sys:String x:Key="SocialNetworkColumn">Социальная сеть</sys:String>
+    <sys:String x:Key="UsernameColumn">Имя пользователя</sys:String>
+    <sys:String x:Key="ProfileUrlColumn">URL профиля</sys:String>
+    <sys:String x:Key="StatusColumn">Статус</sys:String>
+    <sys:String x:Key="SearchStatisticsHeader">Статистика поиска</sys:String>
+    <sys:String x:Key="PlatformsText">Платформ</sys:String>
+    <sys:String x:Key="FoundText">Найдено</sys:String>
+    <sys:String x:Key="NotFoundText">Не найдено</sys:String>
+    <sys:String x:Key="TimeText">Время</sys:String>
+    <sys:String x:Key="SearchCompleted">Поиск завершен</sys:String>
+    <sys:String x:Key="SearchInProgress">Поиск...</sys:String>
+    <sys:String x:Key="AppVersion">Анализатор социальных сетей v1.6.0 | </sys:String>
+    <sys:String x:Key="AppAuthor">Автор: lovly swag | </sys:String>
+    
+    <!-- Error and info messages -->
+    <sys:String x:Key="EmptyUsernameError">Пожалуйста, введите имя пользователя для поиска.</sys:String>
+    <sys:String x:Key="ErrorMessageTitle">Ошибка</sys:String>
+    <sys:String x:Key="InfoMessageTitle">Мой IP</sys:String>
+    <sys:String x:Key="IPRetrievalError">Ошибка при получении IP-адреса: {0}</sys:String>
+    <sys:String x:Key="LinkOpenError">Не удалось открыть ссылку: {0}</sys:String>
+    
+    <!-- Additional UI strings -->
+    <sys:String x:Key="SearchCompletedIn">Поиск завершен за {0:F2} секунд</sys:String>
+    <sys:String x:Key="MyIPMessage">Ваш IP-адрес: {0}</sys:String>
+    <sys:String x:Key="StatusFound">Найден</sys:String>
+    <sys:String x:Key="StatusNotFound">Не найден</sys:String>
+    <sys:String x:Key="StatusTimeoutError">Ошибка: Время ожидания истекло</sys:String>
+    <sys:String x:Key="StatusHttpError">Ошибка HTTP: {0}</sys:String>
+    <sys:String x:Key="StatusGeneralError">Ошибка: {0}</sys:String>
+    
+    <!-- Phone number search strings -->
+    <sys:String x:Key="UsernameSearchRadio">Поиск по имени пользователя</sys:String>
+    <sys:String x:Key="PhoneSearchRadio">Поиск по номеру телефона</sys:String>
+    <sys:String x:Key="EnterPhonePlaceholder">Введите номер телефона для поиска...</sys:String>
+    <sys:String x:Key="EmptyPhoneError">Пожалуйста, введите номер телефона для поиска.</sys:String>
+    <sys:String x:Key="PhoneNumberColumn">Номер телефона</sys:String>
+    <sys:String x:Key="LocationColumn">Местоположение</sys:String>
+    <sys:String x:Key="CarrierColumn">Оператор</sys:String>
+    <sys:String x:Key="NumberTypeColumn">Тип</sys:String>
+    <sys:String x:Key="FormattedNumberColumn">Форматированный номер</sys:String>
+    <sys:String x:Key="IsValidColumn">Действителен</sys:String>
+    <sys:String x:Key="TimezoneColumn">Часовой пояс</sys:String>
+    <sys:String x:Key="RegionCodeColumn">Код региона</sys:String>
+    <sys:String x:Key="IsPossibleColumn">Возможен</sys:String>
+    <sys:String x:Key="ErrorMessageColumn">Сообщение об ошибке</sys:String>
+    <sys:String x:Key="CountryName">Страна</sys:String>
+    <sys:String x:Key="Continent">Континент</sys:String>
+    <sys:String x:Key="AreaCode">Код региона</sys:String>
+    <sys:String x:Key="Provider">Провайдер</sys:String>
+    
+</ResourceDictionary>

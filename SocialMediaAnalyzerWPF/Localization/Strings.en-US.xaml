@@ -1,0 +1,62 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Main window elements -->
+    <sys:String x:Key="AppName">Social Media Analyzer</sys:String>
+    <sys:String x:Key="WindowTitle">Social Media Analyzer</sys:String>
+    <sys:String x:Key="EnterUsernamePlaceholder">Enter username to search...</sys:String>
+    <sys:String x:Key="MyIPButton">My IP</sys:String>
+    <sys:String x:Key="SearchButton">Search</sys:String>
+    <sys:String x:Key="SearchResultsHeader">Search Results</sys:String>
+    <sys:String x:Key="SocialNetworkColumn">Social Network</sys:String>
+    <sys:String x:Key="UsernameColumn">Username</sys:String>
+    <sys:String x:Key="ProfileUrlColumn">Profile URL</sys:String>
+    <sys:String x:Key="StatusColumn">Status</sys:String>
+    <sys:String x:Key="SearchStatisticsHeader">Search Statistics</sys:String>
+    <sys:String x:Key="PlatformsText">Platforms</sys:String>
+    <sys:String x:Key="FoundText">Found</sys:String>
+    <sys:String x:Key="NotFoundText">Not Found</sys:String>
+    <sys:String x:Key="TimeText">Time</sys:String>
+    <sys:String x:Key="SearchCompleted">Search completed</sys:String>
+    <sys:String x:Key="SearchInProgress">Searching...</sys:String>
+    <sys:String x:Key="AppVersion">Social Media Analyzer v1.6.0 | </sys:String>
+    <sys:String x:Key="AppAuthor">Author: lovly swag | </sys:String>
+    
+    <!-- Error and info messages -->
+    <sys:String x:Key="EmptyUsernameError">Please enter a username to search.</sys:String>
+    <sys:String x:Key="ErrorMessageTitle">Error</sys:String>
+    <sys:String x:Key="InfoMessageTitle">My IP</sys:String>
+    <sys:String x:Key="IPRetrievalError">Error retrieving IP address: {0}</sys:String>
+    <sys:String x:Key="LinkOpenError">Could not open link: {0}</sys:String>
+    
+    <!-- Additional UI strings -->
+    <sys:String x:Key="SearchCompletedIn">Search completed in {0:F2} seconds</sys:String>
+    <sys:String x:Key="MyIPMessage">Your IP address: {0}</sys:String>
+    <sys:String x:Key="StatusFound">Found</sys:String>
+    <sys:String x:Key="StatusNotFound">Not Found</sys:String>
+    <sys:String x:Key="StatusTimeoutError">Error: Timeout expired</sys:String>
+    <sys:String x:Key="StatusHttpError">HTTP Error: {0}</sys:String>
+    <sys:String x:Key="StatusGeneralError">Error: {0}</sys:String>
+    
+    <!-- Phone number search strings -->
+    <sys:String x:Key="UsernameSearchRadio">Username Search</sys:String>
+    <sys:String x:Key="PhoneSearchRadio">Phone Number Search</sys:String>
+    <sys:String x:Key="EnterPhonePlaceholder">Enter phone number to search...</sys:String>
+    <sys:String x:Key="EmptyPhoneError">Please enter a phone number to search.</sys:String>
+    <sys:String x:Key="PhoneNumberColumn">Phone Number</sys:String>
+    <sys:String x:Key="LocationColumn">Location</sys:String>
+    <sys:String x:Key="CarrierColumn">Carrier</sys:String>
+    <sys:String x:Key="NumberTypeColumn">Type</sys:String>
+    <sys:String x:Key="FormattedNumberColumn">Formatted Number</sys:String>
+    <sys:String x:Key="IsValidColumn">Valid</sys:String>
+    <sys:String x:Key="TimezoneColumn">Timezone</sys:String>
+    <sys:String x:Key="RegionCodeColumn">Region Code</sys:String>
+    <sys:String x:Key="IsPossibleColumn">Possible</sys:String>
+    <sys:String x:Key="ErrorMessageColumn">Error Message</sys:String>
+    <sys:String x:Key="CountryName">Country</sys:String>
+    <sys:String x:Key="Continent">Continent</sys:String>
+    <sys:String x:Key="AreaCode">Area Code</sys:String>
+    <sys:String x:Key="Provider">Provider</sys:String>
+    
+</ResourceDictionary>
