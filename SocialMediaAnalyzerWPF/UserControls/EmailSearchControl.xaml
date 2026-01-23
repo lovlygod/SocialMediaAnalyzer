@@ -1,0 +1,53 @@
+<UserControl x:Class="SocialMediaAnalyzerWPF.UserControls.EmailSearchControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:SocialMediaAnalyzerWPF.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="600">
+     
+     <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"
+                   Style="{StaticResource HiddenScrollViewerStyle}">
+         <Grid>
+             <materialDesign:Card Style="{StaticResource RoundedCardStyle}">
+                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">
+                     <materialDesign:PackIcon Kind="Email" 
+                                              Width="60" 
+                                              Height="60" 
+                                              Foreground="{DynamicResource SecondaryAccentBrush}"
+                                              HorizontalAlignment="Center"
+                                              Margin="0,0,0,20"/>
+                     <TextBlock Text="{DynamicResource EmailSearchTitle}"
+                                FontSize="24"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource MaterialDesignBody}"
+                                HorizontalAlignment="Center"
+                                Margin="0,0,0,10"/>
+                     <TextBlock Text="{DynamicResource ComingSoonLabel}"
+                                FontSize="16"
+                                Foreground="{DynamicResource MaterialDesignBodyLight}"
+                                HorizontalAlignment="Center"
+                                Margin="0,0,0,20"/>
+                     <TextBlock Text="{DynamicResource EmailSearchComingSoonText}"
+                                FontSize="14"
+                                Foreground="{DynamicResource MaterialDesignBodyLight}"
+                                HorizontalAlignment="Center"
+                                TextWrapping="Wrap"
+                                Margin="0,0,0,20"/>
+                     <Button x:Name="BackButton"
+                             Content="{DynamicResource BackButton}"
+                             Style="{StaticResource RoundedButtonStyle}"
+                             Background="{DynamicResource PrimaryHueDarkBrush}"
+                             Foreground="White"
+                             FontSize="14"
+                             FontWeight="Medium"
+                             Width="120"
+                             Height="35"
+                             Click="BackButton_Click"/>
+                 </StackPanel>
+             </materialDesign:Card>
+         </Grid>
+     </ScrollViewer>
+</UserControl>

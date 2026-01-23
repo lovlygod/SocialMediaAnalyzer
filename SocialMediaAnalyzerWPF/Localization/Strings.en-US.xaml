@@ -59,4 +59,18 @@
     <sys:String x:Key="AreaCode">Area Code</sys:String>
     <sys:String x:Key="Provider">Provider</sys:String>
     
+    <!-- New strings for redesigned interface -->
+    <sys:String x:Key="WelcomeTitle">Welcome to Social Media Analyzer</sys:String>
+    <sys:String x:Key="WelcomeSubtitle">Find social media profiles by username, phone number and more</sys:String>
+    <sys:String x:Key="DeveloperLabel">Developed by lovly</sys:String>
+    <sys:String x:Key="UsernameSearchButton">Search by Nick</sys:String>
+    <sys:String x:Key="PhoneSearchButton">Search by Number</sys:String>
+    <sys:String x:Key="EmailSearchButton">Search by Email</sys:String>
+    <sys:String x:Key="ComingSoonLabel">More search options coming soon...</sys:String>
+    <sys:String x:Key="UsernameSearchTitle">Username Search</sys:String>
+    <sys:String x:Key="PhoneSearchTitle">Phone Number Search</sys:String>
+    <sys:String x:Key="BackButton">Back</sys:String>
+    <sys:String x:Key="EmailSearchTitle">Email Search</sys:String>
+    <sys:String x:Key="EmailSearchComingSoonText">Email search functionality is coming soon. Stay tuned for updates!</sys:String>
+    
 </ResourceDictionary>

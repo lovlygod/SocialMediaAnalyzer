@@ -59,4 +59,18 @@
     <sys:String x:Key="AreaCode">Код региона</sys:String>
     <sys:String x:Key="Provider">Провайдер</sys:String>
     
+    <!-- New strings for redesigned interface -->
+    <sys:String x:Key="WelcomeTitle">Добро пожаловать в Анализатор Социальных Сетей</sys:String>
+    <sys:String x:Key="WelcomeSubtitle">Найдите профили в социальных сетях по имени пользователя, номеру телефона и другим данным</sys:String>
+    <sys:String x:Key="DeveloperLabel">Разработчик: lovly</sys:String>
+    <sys:String x:Key="UsernameSearchButton">Поиск по нику</sys:String>
+    <sys:String x:Key="PhoneSearchButton">Поиск по номеру</sys:String>
+    <sys:String x:Key="EmailSearchButton">Поиск по email</sys:String>
+    <sys:String x:Key="ComingSoonLabel">Больше возможностей поиска скоро появится...</sys:String>
+    <sys:String x:Key="UsernameSearchTitle">Поиск по имени пользователя</sys:String>
+    <sys:String x:Key="PhoneSearchTitle">Поиск по номеру телефона</sys:String>
+    <sys:String x:Key="BackButton">Назад</sys:String>
+    <sys:String x:Key="EmailSearchTitle">Поиск по Email</sys:String>
+    <sys:String x:Key="EmailSearchComingSoonText">Функция поиска по email будет добавлена в ближайшее время. Следите за обновлениями!</sys:String>
+    
 </ResourceDictionary>

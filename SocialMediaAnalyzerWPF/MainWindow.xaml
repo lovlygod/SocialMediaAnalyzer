@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:SocialMediaAnalyzerWPF.Converters"
+        xmlns:usercontrols="clr-namespace:SocialMediaAnalyzerWPF.UserControls"
         mc:Ignorable="d"
         Title="{DynamicResource WindowTitle}"
         Icon="assets/logo.png"
@@ -15,7 +16,7 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         Loaded="Window_Loaded">
-    
+
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         <local:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>
@@ -31,463 +32,10 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
+        <!-- Верхняя панель -->
         <Border Grid.Row="0"
                 Background="{DynamicResource PrimaryHueMidBrush}"
                 Padding="20,15">
-            <StackPanel Orientation="Horizontal">
-                <Image Source="assets/logo.png"
-                       Width="30"
-                       Height="30"
-                       VerticalAlignment="Center"
-                       RenderOptions.BitmapScalingMode="HighQuality"/>
-                <TextBlock Text="{DynamicResource AppName}"
-                           FontSize="24"
-                           FontWeight="Bold"
-                           Foreground="White"
-                           Margin="15,0,0,0"
-                           VerticalAlignment="Center"/>
-            </StackPanel>
-        </Border>
-
-        <ScrollViewer Grid.Row="1"
-                      Margin="20"
-                      HorizontalScrollBarVisibility="Disabled">
-            <StackPanel>
-                
-                <materialDesign:Card Style="{StaticResource RoundedCardStyle}">
-                    <Grid Margin="20">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        
-                        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0,0,0,15">
-                            <RadioButton x:Name="UsernameSearchRadio"
-                                         Content="{DynamicResource UsernameSearchRadio}"
-                                         IsChecked="True"
-                                         GroupName="SearchType"
-                                         Margin="0,0,15,0"/>
-                            <RadioButton x:Name="PhoneSearchRadio"
-                                         Content="{DynamicResource PhoneSearchRadio}"
-                                         GroupName="SearchType"
-                                         Margin="0,0,15,0"/>
-                        </StackPanel>
-                        
-                        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
-                            <TextBox x:Name="UsernameTextBox"
-                                     Style="{StaticResource AnimatedTextBoxStyle}"
-                                     materialDesign:HintAssist.Hint="{DynamicResource EnterUsernamePlaceholder}"
-                                     FontSize="16"
-                                     Margin="0,0,15,0"
-                                     Foreground="{DynamicResource MaterialDesignBody}"
-                                     Background="{DynamicResource MaterialDesignCardBackground}"
-                                     KeyDown="UsernameTextBox_KeyDown"
-                                     Width="300"/>
-                            <TextBox x:Name="PhoneTextBox"
-                                     Style="{StaticResource AnimatedTextBoxStyle}"
-                                     materialDesign:HintAssist.Hint="{DynamicResource EnterPhonePlaceholder}"
-                                     FontSize="16"
-                                     Margin="0,0,15,0"
-                                     Foreground="{DynamicResource MaterialDesignBody}"
-                                     Background="{DynamicResource MaterialDesignCardBackground}"
-                                     KeyDown="PhoneTextBox_KeyDown"
-                                     Width="300"
-                                     Visibility="Collapsed"/>
-                            
-                            <Button Content="{DynamicResource MyIPButton}"
-                                    Style="{StaticResource RoundedButtonStyle}"
-                                    Background="{DynamicResource PrimaryHueDarkBrush}"
-                                    Foreground="White"
-                                    FontSize="14"
-                                    FontWeight="Medium"
-                                    Command="{Binding ShowMyIpCommand}"
-                                    Margin="10,0,0,0"/>
-                        </StackPanel>
-                        
-                        <Button x:Name="SearchButton"
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                Content="{DynamicResource SearchButton}"
-                                Style="{StaticResource RoundedButtonStyle}"
-                                Background="{DynamicResource SecondaryAccentBrush}"
-                                Foreground="White"
-                                FontSize="14"
-                                FontWeight="Medium"
-                                Click="SearchButton_Click"/>
-                    </Grid>
-                </materialDesign:Card>
-
-                <materialDesign:Card Style="{StaticResource RoundedCardStyle}">
-                    <Expander Header="{DynamicResource SearchResultsHeader}"
-                              Margin="5"
-                              Style="{StaticResource DarkExpanderStyle}">
-                        <Grid Margin="10">
-                            <ListView x:Name="UsernameResultsListView"
-                                      ItemsSource="{Binding SearchResults}"
-                                      MaxHeight="300"
-                                      Background="{DynamicResource MaterialDesignCardBackground}"
-                                      Foreground="{DynamicResource MaterialDesignBody}"
-                                      BorderBrush="{DynamicResource MaterialDesignDivider}"
-                                      ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                                      ScrollViewer.VerticalScrollBarVisibility="Auto"
-                                      Loaded="ListView_Loaded"
-                                      Style="{StaticResource DarkListViewStyle}"
-                                      Visibility="{Binding IsPhoneSearchActive, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
-                                <ListView.View>
-                                    <GridView>
-                                        <GridViewColumn Header="{DynamicResource SocialNetworkColumn}" Width="150">
-                                            <GridViewColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <TextBlock Text="{Binding Platform}"
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               VerticalAlignment="Center"/>
-                                                </DataTemplate>
-                                            </GridViewColumn.CellTemplate>
-                                        </GridViewColumn>
-                                        <GridViewColumn Header="{DynamicResource UsernameColumn}" Width="150">
-                                            <GridViewColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <TextBlock Text="{Binding Username}"
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               VerticalAlignment="Center"/>
-                                                </DataTemplate>
-                                            </GridViewColumn.CellTemplate>
-                                        </GridViewColumn>
-                                        <GridViewColumn Header="{DynamicResource ProfileUrlColumn}" Width="300">
-                                            <GridViewColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <TextBlock Text="{Binding ProfileUrl}"
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               VerticalAlignment="Center"/>
-                                                </DataTemplate>
-                                            </GridViewColumn.CellTemplate>
-                                        </GridViewColumn>
-                                        <GridViewColumn Header="{DynamicResource StatusColumn}" Width="100">
-                                            <GridViewColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <TextBlock Text="{Binding Status}"
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               VerticalAlignment="Center"/>
-                                                </DataTemplate>
-                                            </GridViewColumn.CellTemplate>
-                                        </GridViewColumn>
-                                    </GridView>
-                                </ListView.View>
-                                <ListView.ItemContainerStyle>
-                                    <Style TargetType="ListViewItem">
-                                        <Setter Property="Background" Value="{DynamicResource MaterialDesignCardBackground}" />
-                                        <Setter Property="Foreground" Value="{DynamicResource MaterialDesignBody}" />
-                                        <Setter Property="BorderThickness" Value="0" />
-                                        <Setter Property="Padding" Value="5" />
-                                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                    </Style>
-                                </ListView.ItemContainerStyle>
-                            </ListView>
-                            
-                            <ListView x:Name="PhoneResultsListView"
-                                      ItemsSource="{Binding PhoneSearchResults}"
-                                      MaxHeight="300"
-                                      Background="{DynamicResource MaterialDesignCardBackground}"
-                                      Foreground="{DynamicResource MaterialDesignBody}"
-                                      BorderBrush="{DynamicResource MaterialDesignDivider}"
-                                      ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                                      ScrollViewer.VerticalScrollBarVisibility="Auto"
-                                      Loaded="ListView_Loaded"
-                                      Style="{StaticResource DarkListViewStyle}"
-                                      Visibility="{Binding IsPhoneSearchActive, Converter={StaticResource BooleanToVisibilityConverter}}">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <Border Background="{DynamicResource MaterialDesignCardBackground}"
-                                                BorderBrush="{DynamicResource MaterialDesignDivider}"
-                                                BorderThickness="1"
-                                                CornerRadius="4"
-                                                Margin="2"
-                                                Padding="8">
-                                            <StackPanel>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Text="{DynamicResource PhoneNumberColumn}"
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               FontWeight="Bold"
-                                                               Margin="0,0,5,4"/>
-                                                    <TextBlock Text=": "
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               FontWeight="Bold"
-                                                               Margin="0,0,5,4"/>
-                                                    <TextBlock Text="{Binding PhoneNumber}"
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               FontWeight="Bold"
-                                                               Margin="0,0,0,4"/>
-                                                </StackPanel>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Text="{DynamicResource FormattedNumberColumn}"
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,5,4"/>
-                                                    <TextBlock Text=": "
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,5,4"/>
-                                                    <TextBlock Text="{Binding FormattedNumber}"
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,0,4"/>
-                                                </StackPanel>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Text="{DynamicResource LocationColumn}"
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,5,4"/>
-                                                    <TextBlock Text=": "
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,5,4"/>
-                                                    <TextBlock Text="{Binding Location}"
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,0,4"/>
-                                                </StackPanel>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Text="{DynamicResource CarrierColumn}"
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,5,4"/>
-                                                    <TextBlock Text=": "
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,5,4"/>
-                                                    <TextBlock Text="{Binding Carrier}"
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,0,4"/>
-                                                </StackPanel>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Text="{DynamicResource NumberTypeColumn}"
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,5,4"/>
-                                                    <TextBlock Text=": "
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,5,4"/>
-                                                    <TextBlock Text="{Binding NumberType}"
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,0,4"/>
-                                                </StackPanel>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Text="{DynamicResource IsValidColumn}"
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,5,4"/>
-                                                    <TextBlock Text=": "
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,5,4"/>
-                                                    <TextBlock Text="{Binding IsValid}"
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,0,4"/>
-                                                </StackPanel>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Text="{DynamicResource StatusColumn}"
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,5,4"/>
-                                                    <TextBlock Text=": "
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,5,4"/>
-                                                    <TextBlock Text="{Binding Status}"
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,0,4"/>
-                                                </StackPanel>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Text="{DynamicResource RegionCodeColumn}"
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,5,4"/>
-                                                    <TextBlock Text=": "
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,5,4"/>
-                                                    <TextBlock Text="{Binding RegionCode}"
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,0,4"/>
-                                                </StackPanel>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Text="{DynamicResource TimezoneColumn}"
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,5,4"/>
-                                                    <TextBlock Text=": "
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,5,4"/>
-                                                    <TextBlock Text="{Binding Timezone}"
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,0,4"/>
-                                                </StackPanel>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Text="{DynamicResource IsPossibleColumn}"
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,5,4"/>
-                                                    <TextBlock Text=": "
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,5,4"/>
-                                                    <TextBlock Text="{Binding IsPossible}"
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,0,4"/>
-                                                </StackPanel>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Text="{DynamicResource CountryName}"
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,5,4"/>
-                                                    <TextBlock Text=": "
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,5,4"/>
-                                                    <TextBlock Text="{Binding CountryName}"
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,0,4"/>
-                                                </StackPanel>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Text="{DynamicResource Continent}"
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,5,4"/>
-                                                    <TextBlock Text=": "
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,5,4"/>
-                                                    <TextBlock Text="{Binding Continent}"
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,0,4"/>
-                                                </StackPanel>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Text="{DynamicResource AreaCode}"
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,5,4"/>
-                                                    <TextBlock Text=": "
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,5,4"/>
-                                                    <TextBlock Text="{Binding AreaCode}"
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,0,4"/>
-                                                </StackPanel>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Text="{DynamicResource Provider}"
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,5,4"/>
-                                                    <TextBlock Text=": "
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,5,4"/>
-                                                    <TextBlock Text="{Binding Provider}"
-                                                               Foreground="{DynamicResource MaterialDesignBody}"
-                                                               Margin="0,0,0,4"/>
-                                                </StackPanel>
-                                                <StackPanel Orientation="Horizontal"
-                                                           Visibility="{Binding ErrorMessage, Converter={StaticResource BooleanToVisibilityConverter}}">
-                                                    <TextBlock Text="{DynamicResource ErrorMessageColumn}"
-                                                               Foreground="Red"
-                                                               Margin="0,0,5,4"/>
-                                                    <TextBlock Text=": "
-                                                               Foreground="Red"
-                                                               Margin="0,0,5,4"/>
-                                                    <TextBlock Text="{Binding ErrorMessage}"
-                                                               Foreground="Red"
-                                                               Margin="0,0,0,4"/>
-                                                </StackPanel>
-                                            </StackPanel>
-                                        </Border>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                                <ListView.ItemContainerStyle>
-                                    <Style TargetType="ListViewItem">
-                                        <Setter Property="Background" Value="{DynamicResource MaterialDesignCardBackground}" />
-                                        <Setter Property="Foreground" Value="{DynamicResource MaterialDesignBody}" />
-                                        <Setter Property="BorderThickness" Value="0" />
-                                        <Setter Property="Padding" Value="0" />
-                                        <Setter Property="Margin" Value="0" />
-                                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                    </Style>
-                                </ListView.ItemContainerStyle>
-                            </ListView>
-                        </Grid>
-                    </Expander>
-                </materialDesign:Card>
-
-                <materialDesign:Card Style="{StaticResource RoundedCardStyle}">
-                    <Expander Header="{DynamicResource SearchStatisticsHeader}"
-                              Margin="5"
-                              Style="{StaticResource DarkExpanderStyle}">
-                        <Grid Margin="10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            
-                            <StackPanel Grid.Column="0" Margin="5" Tag="stat1">
-                                <TextBlock Text="{Binding TotalPlatformsCount, StringFormat='{}{0}'}"
-                                           FontSize="24"
-                                           FontWeight="Bold"
-                                           HorizontalAlignment="Center"
-                                           Foreground="{DynamicResource SecondaryAccentBrush}"/>
-                                <TextBlock Text="{DynamicResource PlatformsText}"
-                                           FontSize="12"
-                                           HorizontalAlignment="Center"
-                                           Foreground="{DynamicResource MaterialDesignBodyLight}"/>
-                            </StackPanel>
-                            
-                            <StackPanel Grid.Column="1" Margin="5" Tag="stat2">
-                                <TextBlock Text="{Binding FoundProfilesCount, StringFormat='{}{0}'}"
-                                           FontSize="24"
-                                           FontWeight="Bold"
-                                           HorizontalAlignment="Center"
-                                           Foreground="{DynamicResource SecondaryAccentBrush}"/>
-                                <TextBlock Text="{DynamicResource FoundText}"
-                                           FontSize="12"
-                                           HorizontalAlignment="Center"
-                                           Foreground="{DynamicResource MaterialDesignBodyLight}"/>
-                            </StackPanel>
-                            
-                            <StackPanel Grid.Column="2" Margin="5" Tag="stat3">
-                                <TextBlock Text="{Binding NotFoundProfilesCount, StringFormat='{}{0}'}"
-                                           FontSize="24"
-                                           FontWeight="Bold"
-                                           HorizontalAlignment="Center"
-                                           Foreground="{DynamicResource SecondaryAccentBrush}"/>
-                                <TextBlock Text="{DynamicResource NotFoundText}"
-                                           FontSize="12"
-                                           HorizontalAlignment="Center"
-                                           Foreground="{DynamicResource MaterialDesignBodyLight}"/>
-                            </StackPanel>
-                            
-                            <StackPanel Grid.Column="3" Margin="5" Tag="stat4">
-                                <TextBlock Text="{Binding SearchTime, StringFormat='{}{0:F2}s'}"
-                                           FontSize="24"
-                                           FontWeight="Bold"
-                                           HorizontalAlignment="Center"
-                                           Foreground="{DynamicResource SecondaryAccentBrush}"/>
-                                <TextBlock Text="{DynamicResource TimeText}"
-                                           FontSize="12"
-                                           HorizontalAlignment="Center"
-                                           Foreground="{DynamicResource MaterialDesignBodyLight}"/>
-                            </StackPanel>
-                        </Grid>
-                    </Expander>
-                </materialDesign:Card>
-
-                <materialDesign:Card Style="{StaticResource RoundedCardStyle}">
-                    <Grid Margin="10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        
-                        <ProgressBar x:Name="SearchProgressBar"
-                                     Grid.Column="0"
-                                     Height="6"
-                                     Margin="0,10,10,10"
-                                     IsIndeterminate="True"
-                                     Visibility="Collapsed"
-                                     Style="{StaticResource AnimatedProgressBarStyle}"/>
-                        
-                        <TextBlock x:Name="ProgressTextBlock"
-                                   Grid.Column="1"
-                                   Text="{DynamicResource SearchCompleted}"
-                                   VerticalAlignment="Center"
-                                   Foreground="{DynamicResource MaterialDesignBody}"/>
-                    </Grid>
-                </materialDesign:Card>
-
-            </StackPanel>
-        </ScrollViewer>
-
-        <Border Grid.Row="2"
-                Background="{DynamicResource MaterialDesignToolBarBackground}"
-                Padding="20,10">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -495,36 +43,41 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 
-                <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                    <TextBlock Text="{DynamicResource AppVersion}"
-                               FontSize="12"
-                               VerticalAlignment="Center"
-                               Foreground="{DynamicResource MaterialDesignBodyLight}"/>
-                    <TextBlock Text="{DynamicResource AppAuthor}"
-                               FontSize="12"
-                               VerticalAlignment="Center"
-                               Foreground="{DynamicResource MaterialDesignBodyLight}"/>
-                    <TextBlock x:Name="GitHubLink"
-                               Text="GitHub"
-                               FontSize="12"
-                               VerticalAlignment="Center"
-                               Foreground="{DynamicResource SecondaryAccentBrush}"
-                               Cursor="Hand"
-                               MouseDown="GitHubLink_MouseDown">
-                        <TextBlock.Style>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="TextDecorations" Value="None"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="TextDecorations" Value="Underline"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </TextBlock.Style>
-                    </TextBlock>
+                <!-- Кнопка "Назад" (изначально скрыта) -->
+                <Button x:Name="BackButton"
+                        Grid.Column="0"
+                        Content="{DynamicResource BackButton}"
+                        Style="{StaticResource RoundedButtonStyle}"
+                        Background="{DynamicResource PrimaryHueDarkBrush}"
+                        Foreground="White"
+                        FontSize="12"
+                        FontWeight="Medium"
+                        Margin="0,0,10,0"
+                        Click="BackButton_Click"
+                        Visibility="Collapsed"/>
+                        
+                <!-- Логотип и название -->
+                <StackPanel Grid.Column="1" 
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                    <Image Source="assets/logo.png"
+                           Width="30"
+                           Height="30"
+                           VerticalAlignment="Center"
+                           RenderOptions.BitmapScalingMode="HighQuality"/>
+                    <TextBlock x:Name="MainTitle"
+                               Text="{DynamicResource AppName}"
+                               FontSize="24"
+                               FontWeight="Bold"
+                               Foreground="White"
+                               Margin="15,0,0,0"
+                               VerticalAlignment="Center"/>
                 </StackPanel>
                 
-                <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                <!-- Переключение языка и темы -->
+                <StackPanel Grid.Column="2" 
+                            Orientation="Horizontal" 
+                            HorizontalAlignment="Right">
                     <Button x:Name="LanguageSwitchButton"
                             Content="{Binding LanguageButtonText}"
                             Style="{StaticResource RoundedButtonStyle}"
@@ -550,6 +103,135 @@
                         </Button.Content>
                     </Button>
                 </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Основное содержимое -->
+        <ScrollViewer Grid.Row="1"
+                      Margin="20"
+                      HorizontalScrollBarVisibility="Disabled"
+                      VerticalScrollBarVisibility="Auto"
+                      Style="{StaticResource HiddenScrollViewerStyle}">
+            <StackPanel x:Name="MainContentPanel">
+                <!-- Приветственный экран -->
+                <Grid x:Name="WelcomeScreen" Visibility="Visible">
+                    <StackPanel VerticalAlignment="Center" 
+                                HorizontalAlignment="Center" 
+                                Margin="0,50">
+                        <Image Source="assets/logo1.png"
+                               Width="120"
+                               Height="120"
+                               HorizontalAlignment="Center"
+                               RenderOptions.BitmapScalingMode="HighQuality"
+                               Margin="0,0,0,20"/>
+                        <TextBlock Text="{DynamicResource WelcomeTitle}"
+                                   FontSize="36"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource MaterialDesignBody}"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,0,0,10"/>
+                        <TextBlock Text="{DynamicResource WelcomeSubtitle}"
+                                   FontSize="18"
+                                   Foreground="{DynamicResource MaterialDesignBodyLight}"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,0,0,30"/>
+                        <TextBlock Text="{DynamicResource DeveloperLabel}"
+                                   FontSize="14"
+                                   Foreground="{DynamicResource MaterialDesignBodyLight}"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,0,0,20"/>
+                        <TextBlock x:Name="GitHubLink"
+                                   Text="GitHub: @lovlygod"
+                                   FontSize="14"
+                                   Foreground="{DynamicResource SecondaryAccentBrush}"
+                                   HorizontalAlignment="Center"
+                                   Cursor="Hand"
+                                   MouseDown="GitHubLink_MouseDown">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextDecorations" Value="None"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="TextDecorations" Value="Underline"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                        
+                        <StackPanel Orientation="Vertical"
+                                    HorizontalAlignment="Center"
+                                    Margin="0,40,0,0">
+                            <Button x:Name="UsernameSearchButton"
+                                    Content="{DynamicResource UsernameSearchButton}"
+                                    Style="{StaticResource RoundedButtonStyle}"
+                                    Background="{DynamicResource SecondaryAccentBrush}"
+                                    Foreground="White"
+                                    FontSize="14"
+                                    FontWeight="Medium"
+                                    Margin="0,0,0,10"
+                                    Width="200"
+                                    Height="40"
+                                    Click="UsernameSearchButton_Click"/>
+                            <Button x:Name="PhoneSearchButton"
+                                    Content="{DynamicResource PhoneSearchButton}"
+                                    Style="{StaticResource RoundedButtonStyle}"
+                                    Background="{DynamicResource SecondaryAccentBrush}"
+                                    Foreground="White"
+                                    FontSize="14"
+                                    FontWeight="Medium"
+                                    Margin="0,0,0,10"
+                                    Width="200"
+                                    Height="40"
+                                    Click="PhoneSearchButton_Click"/>
+                            <Button x:Name="EmailSearchButton"
+                                    Content="{DynamicResource EmailSearchButton}"
+                                    Style="{StaticResource RoundedButtonStyle}"
+                                    Background="{DynamicResource PrimaryHueDarkBrush}"
+                                    Foreground="White"
+                                    FontSize="14"
+                                    FontWeight="Medium"
+                                    Margin="0,0,0,0"
+                                    Width="200"
+                                    Height="40"
+                                    Click="EmailSearchButton_Click"/>
+                        </StackPanel>
+                        
+                        <TextBlock Text="{DynamicResource ComingSoonLabel}"
+                                   FontSize="12"
+                                   Foreground="{DynamicResource MaterialDesignBodyLight}"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,10,0,0"
+                                   FontStyle="Italic"/>
+                    </StackPanel>
+                </Grid>
+                
+                <!-- Панель поиска по нику (изначально скрыта) -->
+                <usercontrols:UsernameSearchControl x:Name="UsernameSearchControl" Visibility="Collapsed"/>
+                
+                <!-- Панель поиска по телефону (изначально скрыта) -->
+                <usercontrols:PhoneSearchControl x:Name="PhoneSearchControl" Visibility="Collapsed"/>
+                
+                <!-- Панель поиска по email (изначально скрыта) -->
+                <usercontrols:EmailSearchControl x:Name="EmailSearchControl" Visibility="Collapsed" BackButtonClicked="EmailSearchControl_BackButtonClicked"/>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Нижняя панель -->
+        <Border Grid.Row="2"
+                Background="{DynamicResource MaterialDesignToolBarBackground}"
+                Padding="20,10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Grid.Column="0"
+                           Text="{DynamicResource AppVersion}"
+                           FontSize="12"
+                           VerticalAlignment="Center"
+                           Foreground="{DynamicResource MaterialDesignBodyLight}"/>
             </Grid>
         </Border>
     </Grid>

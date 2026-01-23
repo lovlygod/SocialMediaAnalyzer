@@ -21,10 +21,36 @@
 
   <ItemGroup>
     <None Remove="Resources\**" />
+    <None Remove="UserControls\**" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="assets\logo.png" />
+    <Resource Include="assets\logo1.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="UserControls\UsernameSearchControl.xaml.cs">
+      <DependentUpon>UsernameSearchControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\PhoneSearchControl.xaml.cs">
+      <DependentUpon>PhoneSearchControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\EmailSearchControl.xaml.cs">
+      <DependentUpon>EmailSearchControl.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="UserControls\UsernameSearchControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="UserControls\PhoneSearchControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="UserControls\EmailSearchControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
 </Project>

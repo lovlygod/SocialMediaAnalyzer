@@ -11,7 +11,47 @@
                 <ResourceDictionary Source="Resources/DarkTheme.xaml" />
                 <ResourceDictionary Source="Resources/Animations.xaml" />
                 <ResourceDictionary Source="/Localization/Strings.en-US.xaml" />
+                <ResourceDictionary Source="/Localization/Strings.ru-RU.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            
+            <Style x:Key="HiddenScrollViewerStyle" TargetType="{x:Type ScrollViewer}">
+                <Setter Property="HorizontalScrollBarVisibility" Value="Disabled" />
+                <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ScrollViewer}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="0"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition Height="0"/>
+                                </Grid.RowDefinitions>
+                                <Rectangle x:Name="Corner" Grid.Row="1" Grid.Column="1" Fill="{DynamicResource MaterialDesignPaper}"/>
+                                <ScrollContentPresenter x:Name="PART_ScrollContentPresenter" Grid.Row="0" Grid.Column="0" Margin="0" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"/>
+                                <ScrollBar x:Name="PART_VerticalScrollBar" Grid.Row="0" Grid.Column="1" AutomationProperties.AutomationId="VerticalScrollBar" Cursor="Arrow" Maximum="{TemplateBinding ScrollableHeight}" Minimum="0" Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportHeight}" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Style="{DynamicResource HiddenScrollbarStyle}"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            
+            <Style x:Key="HiddenScrollbarStyle" TargetType="{x:Type ScrollBar}">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="Minimum" Value="0" />
+                <Setter Property="Maximum" Value="100" />
+                <Setter Property="Opacity" Value="0" />
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Opacity" Value="0.5" />
+                    </Trigger>
+                    <Trigger Property="IsFocused" Value="True">
+                        <Setter Property="Opacity" Value="1" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
