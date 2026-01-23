@@ -1,6 +1,7 @@
 using SocialMediaAnalyzerWPF.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -8,19 +9,22 @@ using System.IO;
 
 namespace SocialMediaAnalyzerWPF.Services
 {
-    public class SocialMediaService
+    public class OptimizedSocialMediaService
     {
         private readonly HttpClient _httpClient;
         private readonly List<PlatformData> _platforms;
         private readonly PhoneLookupService _phoneLookupService;
 
-        public SocialMediaService()
+        public OptimizedSocialMediaService()
         {
             var handler = new HttpClientHandler();
             _httpClient = new HttpClient(handler);
             _httpClient.Timeout = TimeSpan.FromSeconds(30);
             
-            _platforms = PlatformDataService.GetPlatformsData().Platforms;
+            _platforms = PlatformDataService.GetPlatformsData().Platforms
+                .OrderByDescending(p => p.Metadata.ReliabilityScore)
+                .ThenBy(p => p.Metadata.TypicalResponseTimeMs)
+                .ToList();
             
             _phoneLookupService = new PhoneLookupService();
         }
@@ -37,19 +41,24 @@ namespace SocialMediaAnalyzerWPF.Services
                 return;
             }
 
+            var platformGroups = _platforms.GroupBy(p => p.Category).ToList();
+
             var tasks = new List<Task>();
 
-            foreach (var platform in _platforms)
+            foreach (var group in platformGroups)
             {
-                var task = Task.Run(async () =>
+                var groupTask = Task.Run(async () =>
                 {
-                    var profileUrl = platform.UrlTemplate.Replace("{username}", username);
-                    var result = await CheckProfileExistsAsync(platform, username, profileUrl);
-                    onResultReceived(result);
-                });
-                tasks.Add(task);
+                    foreach (var platform in group.OrderBy(p => p.Metadata.ReliabilityScore).ThenBy(p => p.Metadata.TypicalResponseTimeMs))
+                    {
+                        var profileUrl = platform.UrlTemplate.Replace("{username}", username);
+                        var result = await CheckProfileExistsAsync(platform, username, profileUrl);
+                        onResultReceived(result);
 
-                await Task.Delay(platform.RateLimitDelayMs);
+                        await Task.Delay(platform.RateLimitDelayMs);
+                    }
+                });
+                tasks.Add(groupTask);
             }
 
             await Task.WhenAll(tasks);

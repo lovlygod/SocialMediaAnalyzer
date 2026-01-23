@@ -46,7 +46,7 @@ namespace SocialMediaAnalyzerWPF.ViewModels
         [ObservableProperty]
         private bool _isPhoneSearchActive = false;
 
-        private readonly SocialMediaService _socialMediaService;
+        private readonly OptimizedSocialMediaService _socialMediaService;
         private System.Diagnostics.Stopwatch? _stopwatch;
         
         public RelayCommand ShowMyIpCommand { get; }
@@ -56,7 +56,7 @@ namespace SocialMediaAnalyzerWPF.ViewModels
 
         public MainViewModel()
         {
-            _socialMediaService = new SocialMediaService();
+            _socialMediaService = new OptimizedSocialMediaService();
             ShowMyIpCommand = new RelayCommand(ShowMyIp);
             SwitchLanguageCommand = new RelayCommand(SwitchLanguage);
             SwitchThemeCommand = new RelayCommand(SwitchTheme);

@@ -199,5 +199,27 @@ namespace SocialMediaAnalyzerWPF.UserControls
             animation.BeginTime = TimeSpan.FromMilliseconds(500);
             (sender as ListView)?.BeginAnimation(OpacityProperty, animation);
         }
+        
+        private void ProfileUrl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var textBlock = sender as TextBlock;
+            if (textBlock != null && !string.IsNullOrEmpty(textBlock.Text))
+            {
+                try
+                {
+                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                    {
+                        FileName = textBlock.Text,
+                        UseShellExecute = true
+                    });
+                }
+                catch (Exception ex)
+                {
+                    var message = LocalizationManager.Instance.GetLocalizedString("UrlOpenError");
+                    var title = LocalizationManager.Instance.GetLocalizedString("ErrorMessageTitle");
+                    MessageBox.Show(string.Format(message, ex.Message), title, MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
     }
 }

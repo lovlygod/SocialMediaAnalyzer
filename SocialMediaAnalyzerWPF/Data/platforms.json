@@ -1,0 +1,939 @@
+{
+  "platforms": [
+    {
+      "name": "AboutMe",
+      "baseUrl": "https://about.me/",
+      "urlTemplate": "https://about.me/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "social_network",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 800,
+        "reliabilityScore": 0.85
+      }
+    },
+    {
+      "name": "Behance",
+      "baseUrl": "https://www.behance.net/",
+      "urlTemplate": "https://www.behance.net/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "development",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1200,
+        "reliabilityScore": 0.8
+      }
+    },
+    {
+      "name": "Bitbucket",
+      "baseUrl": "https://bitbucket.org/",
+      "urlTemplate": "https://bitbucket.org/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "development",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1000,
+        "reliabilityScore": 0.75
+      }
+    },
+    {
+      "name": "Blogger",
+      "baseUrl": "https://blogspot.com/",
+      "urlTemplate": "https://{username}.blogspot.com",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "blog",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": false,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1500,
+        "reliabilityScore": 0.7
+      }
+    },
+    {
+      "name": "BuyMeACoffee",
+      "baseUrl": "https://buymeacoff.ee/",
+      "urlTemplate": "https://buymeacoff.ee/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "social_network",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": false,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 900,
+        "reliabilityScore": 0.75
+      }
+    },
+    {
+      "name": "CashApp",
+      "baseUrl": "https://cash.app/",
+      "urlTemplate": "https://cash.app/${username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "finance",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1100,
+        "reliabilityScore": 0.8
+      }
+    },
+    {
+      "name": "CodePen",
+      "baseUrl": "https://codepen.io/",
+      "urlTemplate": "https://codepen.io/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "development",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1000,
+        "reliabilityScore": 0.75
+      }
+    },
+    {
+      "name": "Dribbble",
+      "baseUrl": "https://dribbble.com/",
+      "urlTemplate": "https://dribbble.com/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "design",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1300,
+        "reliabilityScore": 0.8
+      }
+    },
+    {
+      "name": "Discord",
+      "baseUrl": "https://discord.com/",
+      "urlTemplate": "https://discord.com/users/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "social_network",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": false,
+        "requiresAuthForDetails": true,
+        "typicalResponseTimeMs": 1200,
+        "reliabilityScore": 0.65
+      }
+    },
+    {
+      "name": "Facebook",
+      "baseUrl": "https://www.facebook.com/",
+      "urlTemplate": "https://www.facebook.com/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 8000,
+      "category": "social_network",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": true,
+        "typicalResponseTimeMs": 2000,
+        "reliabilityScore": 0.7
+      }
+    },
+    {
+      "name": "Flickr",
+      "baseUrl": "https://www.flickr.com/",
+      "urlTemplate": "https://www.flickr.com/photos/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "media",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1400,
+        "reliabilityScore": 0.75
+      }
+    },
+    {
+      "name": "Foursquare",
+      "baseUrl": "https://foursquare.com/",
+      "urlTemplate": "https://foursquare.com/user/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "location",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1100,
+        "reliabilityScore": 0.7
+      }
+    },
+    {
+      "name": "GitHub",
+      "baseUrl": "https://github.com/",
+      "urlTemplate": "https://github.com/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "development",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1200,
+        "reliabilityScore": 0.85
+      }
+    },
+    {
+      "name": "GitLab",
+      "baseUrl": "https://gitlab.com/",
+      "urlTemplate": "https://gitlab.com/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "development",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1300,
+        "reliabilityScore": 0.8
+      }
+    },
+    {
+      "name": "Goodreads",
+      "baseUrl": "https://www.goodreads.com/",
+      "urlTemplate": "https://www.goodreads.com/user/show/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "reading",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1600,
+        "reliabilityScore": 0.75
+      }
+    },
+    {
+      "name": "Gravatar",
+      "baseUrl": "https://en.gravatar.com/",
+      "urlTemplate": "https://en.gravatar.com/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "social_network",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 900,
+        "reliabilityScore": 0.8
+      }
+    },
+    {
+      "name": "HackerNews",
+      "baseUrl": "https://news.ycombinator.com/",
+      "urlTemplate": "https://news.ycombinator.com/user?id={username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "technology",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1000,
+        "reliabilityScore": 0.75
+      }
+    },
+    {
+      "name": "Imgur",
+      "baseUrl": "https://imgur.com/",
+      "urlTemplate": "https://imgur.com/user/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "media",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": false,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1100,
+        "reliabilityScore": 0.7
+      }
+    },
+    {
+      "name": "Instagram",
+      "baseUrl": "https://www.instagram.com/",
+      "urlTemplate": "https://www.instagram.com/{username}/",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 8000,
+      "category": "social_network",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": true,
+        "typicalResponseTimeMs": 2000,
+        "reliabilityScore": 0.7
+      }
+    },
+    {
+      "name": "LastFM",
+      "baseUrl": "https://www.last.fm/",
+      "urlTemplate": "https://www.last.fm/user/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "music",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1400,
+        "reliabilityScore": 0.75
+      }
+    },
+    {
+      "name": "LinkedIn",
+      "baseUrl": "https://www.linkedin.com/",
+      "urlTemplate": "https://www.linkedin.com/in/{username}/",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 8000,
+      "category": "business",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": true,
+        "typicalResponseTimeMs": 1800,
+        "reliabilityScore": 0.7
+      }
+    },
+    {
+      "name": "Linktree",
+      "baseUrl": "https://linktr.ee/",
+      "urlTemplate": "https://linktr.ee/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "social_network",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1000,
+        "reliabilityScore": 0.75
+      }
+    },
+    {
+      "name": "Mastodon",
+      "baseUrl": "https://mastodon.social/",
+      "urlTemplate": "https://mastodon.social/@{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "social_network",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1200,
+        "reliabilityScore": 0.7
+      }
+    },
+    {
+      "name": "Meetup",
+      "baseUrl": "https://www.meetup.com/",
+      "urlTemplate": "https://www.meetup.com/members/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "social_network",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1500,
+        "reliabilityScore": 0.75
+      }
+    },
+    {
+      "name": "Medium",
+      "baseUrl": "https://medium.com/",
+      "urlTemplate": "https://medium.com/@{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "blog",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1300,
+        "reliabilityScore": 0.8
+      }
+    },
+    {
+      "name": "Myspace",
+      "baseUrl": "https://myspace.com/",
+      "urlTemplate": "https://myspace.com/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "social_network",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": false,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1600,
+        "reliabilityScore": 0.6
+      }
+    },
+    {
+      "name": "OnlyFans",
+      "baseUrl": "https://onlyfans.com/",
+      "urlTemplate": "https://onlyfans.com/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "adult",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1100,
+        "reliabilityScore": 0.65
+      }
+    },
+    {
+      "name": "Pastebin",
+      "baseUrl": "https://pastebin.com/",
+      "urlTemplate": "https://pastebin.com/u/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "development",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": false,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 900,
+        "reliabilityScore": 0.75
+      }
+    },
+    {
+      "name": "Patreon",
+      "baseUrl": "https://www.patreon.com/",
+      "urlTemplate": "https://www.patreon.com/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "finance",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1200,
+        "reliabilityScore": 0.75
+      }
+    },
+    {
+      "name": "Periscope",
+      "baseUrl": "https://www.periscope.tv/",
+      "urlTemplate": "https://www.periscope.tv/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "media",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": false,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1400,
+        "reliabilityScore": 0.6
+      }
+    },
+    {
+      "name": "Pinterest",
+      "baseUrl": "https://www.pinterest.com/",
+      "urlTemplate": "https://www.pinterest.com/{username}/",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "media",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1300,
+        "reliabilityScore": 0.8
+      }
+    },
+    {
+      "name": "Quora",
+      "baseUrl": "https://www.quora.com/",
+      "urlTemplate": "https://www.quora.com/profile/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "knowledge",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1400,
+        "reliabilityScore": 0.75
+      }
+    },
+    {
+      "name": "Reddit",
+      "baseUrl": "https://www.reddit.com/",
+      "urlTemplate": "https://www.reddit.com/user/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "social_network",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1200,
+        "reliabilityScore": 0.8
+      }
+    },
+    {
+      "name": "Roblox",
+      "baseUrl": "https://www.roblox.com/",
+      "urlTemplate": "https://www.roblox.com/user.aspx?username={username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "gaming",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1100,
+        "reliabilityScore": 0.75
+      }
+    },
+    {
+      "name": "Shopify",
+      "baseUrl": "https://shopify.com/",
+      "urlTemplate": "https://{username}.shopify.com",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "business",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1500,
+        "reliabilityScore": 0.7
+      }
+    },
+    {
+      "name": "Signal",
+      "baseUrl": "https://signal.me/",
+      "urlTemplate": "https://signal.me/#p/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "communication",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": false,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1000,
+        "reliabilityScore": 0.6
+      }
+    },
+    {
+      "name": "Skype",
+      "baseUrl": "https://secure.skype.com/",
+      "urlTemplate": "https://secure.skype.com/userprofile/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "communication",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": false,
+        "requiresAuthForDetails": true,
+        "typicalResponseTimeMs": 1300,
+        "reliabilityScore": 0.65
+      }
+    },
+    {
+      "name": "Slack",
+      "baseUrl": "https://slack.com/",
+      "urlTemplate": "https://{username}.slack.com",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "business",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": false,
+        "requiresAuthForDetails": true,
+        "typicalResponseTimeMs": 1400,
+        "reliabilityScore": 0.7
+      }
+    },
+    {
+      "name": "Snapchat",
+      "baseUrl": "https://www.snapchat.com/",
+      "urlTemplate": "https://www.snapchat.com/add/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "social_network",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": false,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1600,
+        "reliabilityScore": 0.65
+      }
+    },
+    {
+      "name": "SoundCloud",
+      "baseUrl": "https://soundcloud.com/",
+      "urlTemplate": "https://soundcloud.com/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "music",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1200,
+        "reliabilityScore": 0.75
+      }
+    },
+    {
+      "name": "Spotify",
+      "baseUrl": "https://open.spotify.com/",
+      "urlTemplate": "https://open.spotify.com/user/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "music",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": false,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1100,
+        "reliabilityScore": 0.8
+      }
+    },
+    {
+      "name": "StackOverflow",
+      "baseUrl": "https://stackoverflow.com/",
+      "urlTemplate": "https://stackoverflow.com/users/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "development",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1000,
+        "reliabilityScore": 0.85
+      }
+    },
+    {
+      "name": "Steam",
+      "baseUrl": "https://steamcommunity.com/",
+      "urlTemplate": "https://steamcommunity.com/id/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "gaming",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1300,
+        "reliabilityScore": 0.75
+      }
+    },
+    {
+      "name": "Telegram",
+      "baseUrl": "https://t.me/",
+      "urlTemplate": "https://t.me/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "communication",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": false,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 900,
+        "reliabilityScore": 0.7
+      }
+    },
+    {
+      "name": "TikTok",
+      "baseUrl": "https://www.tiktok.com/",
+      "urlTemplate": "https://www.tiktok.com/@{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 8000,
+      "category": "social_network",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": true,
+        "typicalResponseTimeMs": 2000,
+        "reliabilityScore": 0.65
+      }
+    },
+    {
+      "name": "TripAdvisor",
+      "baseUrl": "https://www.tripadvisor.com/",
+      "urlTemplate": "https://www.tripadvisor.com/members/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "travel",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1500,
+        "reliabilityScore": 0.7
+      }
+    },
+    {
+      "name": "Tumblr",
+      "baseUrl": "https://tumblr.com/",
+      "urlTemplate": "https://{username}.tumblr.com",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "blog",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": false,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1200,
+        "reliabilityScore": 0.7
+      }
+    },
+    {
+      "name": "Twitch",
+      "baseUrl": "https://www.twitch.tv/",
+      "urlTemplate": "https://www.twitch.tv/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "gaming",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1100,
+        "reliabilityScore": 0.8
+      }
+    },
+    {
+      "name": "Twitter",
+      "baseUrl": "https://twitter.com/",
+      "urlTemplate": "https://twitter.com/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 8000,
+      "category": "social_network",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1000,
+        "reliabilityScore": 0.75
+      }
+    },
+    {
+      "name": "VK",
+      "baseUrl": "https://vk.com/",
+      "urlTemplate": "https://vk.com/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "social_network",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1300,
+        "reliabilityScore": 0.7
+      }
+    },
+    {
+      "name": "Vimeo",
+      "baseUrl": "https://vimeo.com/",
+      "urlTemplate": "https://vimeo.com/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "media",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1400,
+        "reliabilityScore": 0.75
+      }
+    },
+    {
+      "name": "Wikipedia",
+      "baseUrl": "https://wikipedia.org/",
+      "urlTemplate": "https://wikipedia.org/wiki/User:{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "knowledge",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": false,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1100,
+        "reliabilityScore": 0.8
+      }
+    },
+    {
+      "name": "WordPress",
+      "baseUrl": "https://wordpress.com/",
+      "urlTemplate": "https://{username}.wordpress.com",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "blog",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1300,
+        "reliabilityScore": 0.75
+      }
+    },
+    {
+      "name": "Xing",
+      "baseUrl": "https://www.xing.com/",
+      "urlTemplate": "https://www.xing.com/profile/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 5000,
+      "category": "business",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1400,
+        "reliabilityScore": 0.7
+      }
+    },
+    {
+      "name": "YouTube",
+      "baseUrl": "https://www.youtube.com/",
+      "urlTemplate": "https://www.youtube.com/user/{username}",
+      "statusCheckMethod": "http_status_code",
+      "successCodes": [200],
+      "failureCodes": [404],
+      "responseTimeThresholdMs": 8000,
+      "category": "media",
+      "rateLimitDelayMs": 100,
+      "metadata": {
+        "supportsVerification": true,
+        "requiresAuthForDetails": false,
+        "typicalResponseTimeMs": 1600,
+        "reliabilityScore": 0.85
+      }
+    }
+  ]
+}

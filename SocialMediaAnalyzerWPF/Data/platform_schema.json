@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Social Media Platform Schema",
+  "description": "Schema for social media platform data used in username search optimization",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the social media platform"
+    },
+    "baseUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Base URL of the platform"
+    },
+    "urlTemplate": {
+      "type": "string",
+      "description": "URL template with placeholder for username (e.g. https://example.com/{username})"
+    },
+    "statusCheckMethod": {
+      "type": "string",
+      "enum": ["http_status_code", "content_pattern", "both"],
+      "description": "Method to determine if profile exists"
+    },
+    "successCodes": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      },
+      "description": "HTTP status codes indicating profile exists"
+    },
+    "failureCodes": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      },
+      "description": "HTTP status codes indicating profile not found"
+    },
+    "successPattern": {
+      "type": "string",
+      "description": "Regex pattern that indicates profile exists in page content"
+    },
+    "failurePattern": {
+      "type": "string",
+      "description": "Regex pattern that indicates profile does not exist"
+    },
+    "responseTimeThresholdMs": {
+      "type": "integer",
+      "description": "Maximum response time threshold in milliseconds"
+    },
+    "category": {
+      "type": "string",
+      "enum": ["social_network", "development", "blog", "gaming", "business", "media"],
+      "description": "Category of the platform"
+    },
+    "rateLimitDelayMs": {
+      "type": "integer",
+      "description": "Minimum delay between requests to avoid rate limiting"
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "supportsVerification": {
+          "type": "boolean",
+          "description": "Whether the platform supports account verification"
+        },
+        "requiresAuthForDetails": {
+          "type": "boolean",
+          "description": "Whether authentication is required to get detailed info"
+        },
+        "typicalResponseTimeMs": {
+          "type": "integer",
+          "description": "Typical response time in milliseconds"
+        },
+        "reliabilityScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Reliability score from 0 to 1"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": ["name", "baseUrl", "urlTemplate", "statusCheckMethod", "responseTimeThresholdMs", "category"]
+}

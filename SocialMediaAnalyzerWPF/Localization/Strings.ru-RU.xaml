@@ -20,7 +20,7 @@
     <sys:String x:Key="TimeText">Время</sys:String>
     <sys:String x:Key="SearchCompleted">Поиск завершен</sys:String>
     <sys:String x:Key="SearchInProgress">Поиск...</sys:String>
-    <sys:String x:Key="AppVersion">Анализатор социальных сетей v1.7.1 | </sys:String>
+    <sys:String x:Key="AppVersion">Анализатор социальных сетей v1.7.2 | </sys:String>
     <sys:String x:Key="AppAuthor">Автор: lovly swag | </sys:String>
     
     <!-- Error and info messages -->
@@ -73,5 +73,6 @@
     <sys:String x:Key="EmailSearchTitle">Поиск по Email</sys:String>
     <sys:String x:Key="EmailSearchComingSoonText">Функция поиска по email будет добавлена в ближайшее время. Следите за обновлениями!</sys:String>
     <sys:String x:Key="ScrollHintText">Если прокрутка не работает, скролльте в указанной области:</sys:String>
+    <sys:String x:Key="ClickUrlHint">Нажмите на URL-адреса, чтобы открыть их в браузере</sys:String>
     
 </ResourceDictionary>

@@ -80,7 +80,19 @@
                           Margin="5"
                           Style="{StaticResource DarkExpanderStyle}">
                     <Grid Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0"
+                                   Text="{DynamicResource ClickUrlHint}"
+                                   FontSize="10"
+                                   FontStyle="Italic"
+                                   Foreground="{DynamicResource MaterialDesignBodyLight}"
+                                   Margin="0,0,0,10"
+                                   HorizontalAlignment="Left"/>
                         <ListView x:Name="UsernameResultsListView"
+                                  Grid.Row="1"
                                   ItemsSource="{Binding SearchResults, ElementName=UsernameSearchControlRoot}"
                                   MaxHeight="300"
                                   Background="{DynamicResource MaterialDesignCardBackground}"
@@ -115,8 +127,16 @@
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding ProfileUrl}"
-                                                           Foreground="{DynamicResource MaterialDesignBody}"
-                                                           VerticalAlignment="Center"/>
+                                                           Foreground="{DynamicResource SecondaryAccentBrush}"
+                                                           VerticalAlignment="Center"
+                                                           Cursor="Hand"
+                                                           TextDecorations="Underline">
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="TextBlock">
+                                                            <EventSetter Event="MouseLeftButtonDown" Handler="ProfileUrl_MouseLeftButtonDown"/>
+                                                        </Style>
+                                                    </TextBlock.Style>
+                                                </TextBlock>
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
