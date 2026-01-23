@@ -32,7 +32,6 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Верхняя панель -->
         <Border Grid.Row="0"
                 Background="{DynamicResource PrimaryHueMidBrush}"
                 Padding="20,15">
@@ -43,7 +42,6 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 
-                <!-- Кнопка "Назад" (изначально скрыта) -->
                 <Button x:Name="BackButton"
                         Grid.Column="0"
                         Content="{DynamicResource BackButton}"
@@ -56,7 +54,6 @@
                         Click="BackButton_Click"
                         Visibility="Collapsed"/>
                         
-                <!-- Логотип и название -->
                 <StackPanel Grid.Column="1" 
                             Orientation="Horizontal"
                             HorizontalAlignment="Center">
@@ -74,7 +71,6 @@
                                VerticalAlignment="Center"/>
                 </StackPanel>
                 
-                <!-- Переключение языка и темы -->
                 <StackPanel Grid.Column="2" 
                             Orientation="Horizontal" 
                             HorizontalAlignment="Right">
@@ -106,14 +102,12 @@
             </Grid>
         </Border>
 
-        <!-- Основное содержимое -->
         <ScrollViewer Grid.Row="1"
                       Margin="20"
                       HorizontalScrollBarVisibility="Disabled"
                       VerticalScrollBarVisibility="Auto"
                       Style="{StaticResource HiddenScrollViewerStyle}">
             <StackPanel x:Name="MainContentPanel">
-                <!-- Приветственный экран -->
                 <Grid x:Name="WelcomeScreen" Visibility="Visible">
                     <StackPanel VerticalAlignment="Center" 
                                 HorizontalAlignment="Center" 
@@ -206,18 +200,14 @@
                     </StackPanel>
                 </Grid>
                 
-                <!-- Панель поиска по нику (изначально скрыта) -->
                 <usercontrols:UsernameSearchControl x:Name="UsernameSearchControl" Visibility="Collapsed"/>
                 
-                <!-- Панель поиска по телефону (изначально скрыта) -->
                 <usercontrols:PhoneSearchControl x:Name="PhoneSearchControl" Visibility="Collapsed"/>
                 
-                <!-- Панель поиска по email (изначально скрыта) -->
                 <usercontrols:EmailSearchControl x:Name="EmailSearchControl" Visibility="Collapsed" BackButtonClicked="EmailSearchControl_BackButtonClicked"/>
             </StackPanel>
         </ScrollViewer>
 
-        <!-- Нижняя панель -->
         <Border Grid.Row="2"
                 Background="{DynamicResource MaterialDesignToolBarBackground}"
                 Padding="20,10">

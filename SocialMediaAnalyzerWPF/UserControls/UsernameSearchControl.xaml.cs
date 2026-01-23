@@ -73,7 +73,6 @@ namespace SocialMediaAnalyzerWPF.UserControls
             
             _viewModel = new MainViewModel();
             
-            // Привязываем свойства зависимостей к ViewModel
             DataContext = _viewModel;
             
             SearchResults = _viewModel.SearchResults;
@@ -84,7 +83,6 @@ namespace SocialMediaAnalyzerWPF.UserControls
             
             LocalizationManager.Instance.LanguageChanged += OnLanguageChanged;
             
-            // Подписываемся на изменения свойств в ViewModel для обновления статистики в реальном времени
             _viewModel.PropertyChanged += ViewModel_PropertyChanged;
         }
 
@@ -112,10 +110,8 @@ namespace SocialMediaAnalyzerWPF.UserControls
             UpdateProgressText();
         }
         
-        // Для отписки от событий при уничтожении элемента управления
         public void Cleanup()
         {
-            // Отписываемся от событий
             _viewModel.PropertyChanged -= ViewModel_PropertyChanged;
             LocalizationManager.Instance.LanguageChanged -= OnLanguageChanged;
         }
@@ -169,7 +165,6 @@ namespace SocialMediaAnalyzerWPF.UserControls
                 {
                     await _viewModel.SearchAsync(username);
                     
-                    // Обновляем значения свойств зависимости
                     TotalPlatformsCount = _viewModel.TotalPlatformsCount;
                     FoundProfilesCount = _viewModel.FoundProfilesCount;
                     NotFoundProfilesCount = _viewModel.NotFoundProfilesCount;

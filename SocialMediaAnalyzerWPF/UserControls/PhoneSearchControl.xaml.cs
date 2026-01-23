@@ -73,7 +73,6 @@ namespace SocialMediaAnalyzerWPF.UserControls
             
             _viewModel = new MainViewModel();
             
-            // Привязываем свойства зависимостей к ViewModel
             DataContext = _viewModel;
             
             PhoneSearchResults = _viewModel.PhoneSearchResults;
@@ -84,7 +83,6 @@ namespace SocialMediaAnalyzerWPF.UserControls
             
             LocalizationManager.Instance.LanguageChanged += OnLanguageChanged;
             
-            // Подписываемся на изменения свойств в ViewModel для обновления статистики в реальном времени
             _viewModel.PropertyChanged += ViewModel_PropertyChanged;
         }
 
@@ -156,7 +154,6 @@ namespace SocialMediaAnalyzerWPF.UserControls
                 {
                     _viewModel.PhoneSearchCommand.Execute(phoneNumber);
                     
-                    // Обновляем значения свойств зависимости
                     TotalPlatformsCount = _viewModel.TotalPlatformsCount;
                     FoundProfilesCount = _viewModel.FoundProfilesCount;
                     NotFoundProfilesCount = _viewModel.NotFoundProfilesCount;
@@ -192,10 +189,8 @@ namespace SocialMediaAnalyzerWPF.UserControls
             (sender as ListView)?.BeginAnimation(OpacityProperty, animation);
         }
         
-        // Для отписки от событий при уничтожении элемента управления
         public void Cleanup()
         {
-            // Отписываемся от событий
             _viewModel.PropertyChanged -= ViewModel_PropertyChanged;
             LocalizationManager.Instance.LanguageChanged -= OnLanguageChanged;
         }

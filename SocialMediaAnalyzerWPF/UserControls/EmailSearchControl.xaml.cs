@@ -27,11 +27,8 @@ namespace SocialMediaAnalyzerWPF.UserControls
             RaiseEvent(new RoutedEventArgs(BackButtonClickedEvent));
         }
         
-        // Для отписки от событий при уничтожении элемента управления
         public void Cleanup()
         {
-            // В данном элементе управления нет подписок на события,
-            // но метод добавлен для согласованности с другими элементами управления
         }
     }
 }

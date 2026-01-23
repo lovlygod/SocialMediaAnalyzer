@@ -218,7 +218,7 @@ namespace SocialMediaAnalyzerWPF.ViewModels
             {
                 if (!string.IsNullOrEmpty(phoneNumber))
                 {
-                    TotalPlatformsCount = 1; // Just for phone number validation
+                    TotalPlatformsCount = 1;
                     OnPropertyChanged(nameof(TotalPlatformsCount));
                     
                     var result = await _socialMediaService.SearchByPhoneNumberAsync(phoneNumber);

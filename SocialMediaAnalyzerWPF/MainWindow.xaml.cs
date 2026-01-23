@@ -30,7 +30,6 @@ namespace SocialMediaAnalyzerWPF
 
         private void OnLanguageChanged(object? sender, CultureInfo e)
         {
-            // Обновление текста не требуется, так как используется привязка к ресурсам
         }
 
         private void LanguageSwitchButton_Click(object sender, RoutedEventArgs e)
@@ -96,7 +95,6 @@ namespace SocialMediaAnalyzerWPF
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            // Вернуться к главному экрану
             CleanupPreviousView();
             WelcomeScreen.Visibility = Visibility.Visible;
             GetUsernameSearchControl().Visibility = Visibility.Collapsed;
@@ -112,7 +110,6 @@ namespace SocialMediaAnalyzerWPF
             BackButton_Click(sender, e);
         }
         
-        // Метод для очистки предыдущего элемента управления перед переключением
         private void CleanupPreviousView()
         {
             var usernameControl = this.FindName("UsernameSearchControl") as UserControls.UsernameSearchControl;
@@ -128,7 +125,6 @@ namespace SocialMediaAnalyzerWPF
             }
         }
 
-        // Методы для получения элементов управления
         private UserControl GetUsernameSearchControl()
         {
             return (UserControl)FindName("UsernameSearchControl");
