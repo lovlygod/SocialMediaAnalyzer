@@ -20,7 +20,7 @@
     <sys:String x:Key="TimeText">Time</sys:String>
     <sys:String x:Key="SearchCompleted">Search completed</sys:String>
     <sys:String x:Key="SearchInProgress">Searching...</sys:String>
-    <sys:String x:Key="AppVersion">Social Media Analyzer v1.7.0 | </sys:String>
+    <sys:String x:Key="AppVersion">Social Media Analyzer v1.7.1 | </sys:String>
     <sys:String x:Key="AppAuthor">Author: lovly swag | </sys:String>
     
     <!-- Error and info messages -->
@@ -72,5 +72,6 @@
     <sys:String x:Key="BackButton">Back</sys:String>
     <sys:String x:Key="EmailSearchTitle">Email Search</sys:String>
     <sys:String x:Key="EmailSearchComingSoonText">Email search functionality is coming soon. Stay tuned for updates!</sys:String>
+    <sys:String x:Key="ScrollHintText">If scrolling doesn't work, scroll in the indicated area:</sys:String>
     
 </ResourceDictionary>

@@ -87,7 +87,8 @@
                                   Foreground="{DynamicResource MaterialDesignBody}"
                                   BorderBrush="{DynamicResource MaterialDesignDivider}"
                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                  ScrollViewer.CanContentScroll="True"
                                   Loaded="ListView_Loaded"
                                   Style="{StaticResource DarkListViewStyle}">
                             <ListView.View>

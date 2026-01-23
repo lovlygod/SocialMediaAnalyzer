@@ -16,6 +16,30 @@
         <Style x:Key="AnimatedTextBoxStyle" TargetType="TextBox" BasedOn="{StaticResource RoundedTextBoxStyle}">
             <EventSetter Event="Loaded" Handler="TextBox_Loaded" />
         </Style>
+        
+        <Style x:Key="HiddenScrollListViewStyle" TargetType="ListView" BasedOn="{StaticResource DarkListViewStyle}">
+            <Setter Property="MaxHeight" Value="400"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListView">
+                        <ScrollViewer x:Name="ScrollViewer"
+                                      Background="{TemplateBinding Background}"
+                                      BorderBrush="{TemplateBinding BorderBrush}"
+                                      BorderThickness="{TemplateBinding BorderThickness}"
+                                      Padding="{TemplateBinding Padding}"
+                                      SnapsToDevicePixels="True"
+                                      HorizontalScrollBarVisibility="Disabled"
+                                      VerticalScrollBarVisibility="Auto"
+                                      Style="{StaticResource HiddenScrollViewerStyle}">
+                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </ScrollViewer>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </UserControl.Resources>
     
     <ScrollViewer HorizontalScrollBarVisibility="Disabled"
@@ -72,14 +96,30 @@
                     <Grid Margin="10">
                         <ListView x:Name="PhoneResultsListView"
                                   ItemsSource="{Binding PhoneSearchResults, ElementName=PhoneSearchControlRoot}"
-                                  MaxHeight="300"
+                                  MaxHeight="400"
                                   Background="{DynamicResource MaterialDesignCardBackground}"
                                   Foreground="{DynamicResource MaterialDesignBody}"
                                   BorderBrush="{DynamicResource MaterialDesignDivider}"
                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                  ScrollViewer.CanContentScroll="True"
                                   Loaded="ListView_Loaded"
                                   Style="{StaticResource DarkListViewStyle}">
+                            <ListView.Template>
+                                <ControlTemplate TargetType="ListView">
+                                    <ScrollViewer x:Name="ScrollViewer"
+                                                  Background="{TemplateBinding Background}"
+                                                  BorderBrush="{TemplateBinding BorderBrush}"
+                                                  BorderThickness="{TemplateBinding BorderThickness}"
+                                                  Padding="{TemplateBinding Padding}"
+                                                  SnapsToDevicePixels="True"
+                                                  HorizontalScrollBarVisibility="Disabled"
+                                                  VerticalScrollBarVisibility="Auto"
+                                                  Style="{StaticResource HiddenScrollViewerStyle}">
+                                        <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                    </ScrollViewer>
+                                </ControlTemplate>
+                            </ListView.Template>
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <Border Background="{DynamicResource MaterialDesignCardBackground}"

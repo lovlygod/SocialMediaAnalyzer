@@ -191,6 +191,30 @@
                                     Click="EmailSearchButton_Click"/>
                         </StackPanel>
                         
+                        <StackPanel Orientation="Vertical"
+                                    HorizontalAlignment="Center"
+                                    Margin="0,20,0,0">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+                                <materialDesign:PackIcon Kind="AlertCircle"
+                                                         Width="20"
+                                                         Height="20"
+                                                         VerticalAlignment="Center"
+                                                         Margin="0,0,5,0"
+                                                         Foreground="Red"/>
+                                <TextBlock Text="{DynamicResource ScrollHintText}"
+                                           FontSize="12"
+                                           Foreground="{DynamicResource MaterialDesignBodyLight}"
+                                           VerticalAlignment="Center"
+                                           FontStyle="Italic"/>
+                            </StackPanel>
+                            <Image Source="/assets/scroll.png"
+                                   Width="330"
+                                   Height="212"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,0,0,10"
+                                   RenderOptions.BitmapScalingMode="HighQuality"/>
+                        </StackPanel>
+                        
                         <TextBlock Text="{DynamicResource ComingSoonLabel}"
                                    FontSize="12"
                                    Foreground="{DynamicResource MaterialDesignBodyLight}"

@@ -17,21 +17,22 @@
             <Style x:Key="HiddenScrollViewerStyle" TargetType="{x:Type ScrollViewer}">
                 <Setter Property="HorizontalScrollBarVisibility" Value="Disabled" />
                 <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+                <Setter Property="CanContentScroll" Value="True" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ScrollViewer}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>
-                                    <ColumnDefinition Width="0"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
-                                    <RowDefinition Height="0"/>
+                                    <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                <Rectangle x:Name="Corner" Grid.Row="1" Grid.Column="1" Fill="{DynamicResource MaterialDesignPaper}"/>
                                 <ScrollContentPresenter x:Name="PART_ScrollContentPresenter" Grid.Row="0" Grid.Column="0" Margin="0" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"/>
-                                <ScrollBar x:Name="PART_VerticalScrollBar" Grid.Row="0" Grid.Column="1" AutomationProperties.AutomationId="VerticalScrollBar" Cursor="Arrow" Maximum="{TemplateBinding ScrollableHeight}" Minimum="0" Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportHeight}" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Style="{DynamicResource HiddenScrollbarStyle}"/>
+                                <ScrollBar x:Name="PART_VerticalScrollBar" Grid.Row="0" Grid.Column="1" AutomationProperties.AutomationId="VerticalScrollBar" Cursor="Arrow" Maximum="{TemplateBinding ScrollableHeight}" Minimum="0" Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportHeight}" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Style="{DynamicResource HiddenScrollbarStyle}" IsHitTestVisible="False" />
+                                <Rectangle x:Name="Corner" Grid.Row="1" Grid.Column="1" Fill="{TemplateBinding Background}" Margin="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsHitTestVisible="False"/>
                             </Grid>
                         </ControlTemplate>
                     </Setter.Value>
@@ -43,12 +44,15 @@
                 <Setter Property="Minimum" Value="0" />
                 <Setter Property="Maximum" Value="100" />
                 <Setter Property="Opacity" Value="0" />
+                <Setter Property="IsHitTestVisible" Value="False" />
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="True">
                         <Setter Property="Opacity" Value="0.5" />
+                        <Setter Property="IsHitTestVisible" Value="True" />
                     </Trigger>
                     <Trigger Property="IsFocused" Value="True">
                         <Setter Property="Opacity" Value="1" />
+                        <Setter Property="IsHitTestVisible" Value="True" />
                     </Trigger>
                 </Style.Triggers>
             </Style>

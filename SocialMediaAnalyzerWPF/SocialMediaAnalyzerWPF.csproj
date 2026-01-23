@@ -8,9 +8,9 @@
     <UseWPF>true</UseWPF>
     <AssemblyName>SocialMediaAnalyzerWPF</AssemblyName>
     <RootNamespace>SocialMediaAnalyzerWPF</RootNamespace>
-    <Version>1.7.0</Version>
-    <AssemblyVersion>1.7.0.0</AssemblyVersion>
-    <FileVersion>1.7.0.0</FileVersion>
+    <Version>1.7.1</Version>
+    <AssemblyVersion>1.7.1.0</AssemblyVersion>
+    <FileVersion>1.7.1.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,6 +27,7 @@
   <ItemGroup>
     <Resource Include="assets\logo.png" />
     <Resource Include="assets\logo1.png" />
+    <Resource Include="assets\scroll.png" />
   </ItemGroup>
 
   <ItemGroup>
